@@ -8,11 +8,11 @@ export default function Home() {
 <>
 
   <div className="
-relative  bg-left bg-cover h-screen min-h-144
+relative  bg-cover h-screen min-h-144
 bg-[url('https://i.imgur.com/et973ll.jpg')] 
 ">
   <div className="
-relative  bg-left bg-cover h-screen min-h-144 
+relative  bg-left bg-cover  h-screen min-h-144 
 bg-[url('https://i.imgur.com/QP0ElDy.png')] 
 ">
       

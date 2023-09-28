@@ -91,8 +91,11 @@ function Navbar() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+             
             >
-              <MenuIcon />
+              <MenuIcon 
+              fontSize='large'
+              />
             </IconButton>
             <Menu
               id="menu-appbar"
