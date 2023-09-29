@@ -1,6 +1,5 @@
 import { ArrowForward } from "@mui/icons-material";
 import React from "react";
-import { render } from "react-dom";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
