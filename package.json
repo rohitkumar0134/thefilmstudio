@@ -15,7 +15,8 @@
     "@mui/material": "^5.14.11",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-lite-youtube-embed": "^2.3.52"
   },
   "devDependencies": {
     "autoprefixer": "latest",

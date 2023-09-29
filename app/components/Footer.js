@@ -1,4 +1,5 @@
 import React from 'react'
+import { Facebook, Instagram, Twitter, YouTube } from '@mui/icons-material'
 
 function Footer() {
     return (
@@ -13,13 +14,15 @@ function Footer() {
                             </h5>
                             <div className="mt-6 lg:mb-0 mb-6">
                                 <button className="bg-gray-100 text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-                                    <i className="fab fa-twitter"></i>
-                                    </button>
-                                    <button className="bg-gray-100 text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-                                    <i className="fab fa-facebook-square"></i></button><button className="bg-gray-100 text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-                                    <i className="fab fa-dribbble"></i></button><button className="bg-gray-100 text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-                                    <i className="fab fa-github"></i>
+                                    <Twitter />
                                 </button>
+                                <button className="bg-gray-100 text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+                                    <Facebook />
+                                </button>
+                                <button className="bg-gray-100 text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+                                    <Instagram />                                    </button>
+                                <button className="bg-gray-100 text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+                                    <YouTube />                                </button>
                             </div>
                         </div>
                         <div className="w-full lg:w-6/12 px-4">

@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Navbar from './components/Navbar'
 import Service from './components/Service'
 import Footer from './components/Footer'
+import Portfolio from './components/Portfolio'
+
 
 export default function Home() {
   return (
@@ -34,7 +36,14 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
     </div>
   <div className=''>
   <Service/>
+  <hr className=''/>
   </div>
+  <div className=''>
+  <Portfolio/>
+  </div>
+
+
+
   <Footer/>
 
 

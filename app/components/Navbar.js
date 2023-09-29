@@ -12,16 +12,19 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useRouter } from 'next/navigation';
+import logo from '../assets/logo.png'
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Portfolio', 'Pricing', 'About-us'];
 
 function Navbar() {
+  const router=useRouter()
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-
+console.log(logo)
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -37,12 +40,14 @@ function Navbar() {
       sx={{ color: 'rgb(209 213 219)' }}
       >
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+<img src={logo.src} className=' logo mr-1 h-7 md:h-9 md:none filter grayscale'/>
+
+          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -53,17 +58,16 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            TheFilmHouse
           </Typography>
 
   
-          
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -75,7 +79,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            TheFilmHouse
           </Typography>
           <Box sx={{ flexGrow: 1, justifyContent: 'flex-end', display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -101,7 +105,7 @@ function Navbar() {
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'right',
+                horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
@@ -110,7 +114,8 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} 
+                 href={`/${page}`} onClick={()=>router.push(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -121,7 +126,8 @@ function Navbar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>{console.log("hwello")}}
+                href={`/${page}`}
                 sx={{ my: 2,mx:4, color: 'inherit', display: 'block' }}
               >
                 {page}
