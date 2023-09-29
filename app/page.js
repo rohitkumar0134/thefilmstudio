@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Service from './components/Service'
 import Footer from './components/Footer'
 import Portfolio from './components/Portfolio'
+import Ourclient from './components/Ourclient'
 
 
 export default function Home() {
@@ -42,7 +43,7 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
   <Portfolio/>
   </div>
 
-
+<Ourclient/>
 
   <Footer/>
 
