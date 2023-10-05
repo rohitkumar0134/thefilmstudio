@@ -8,10 +8,10 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 const Portfolio = () => {
   return (
     <section className="pt-10 pb-12   bg-black">
-      <div className="">
+      <div className="bg-[url('https://j.gifs.com/KeX0g7.gif')] bg-cover">
 
 
-        <div className="flex flex-wrap text-gray-300 z-50">
+        <div className="flex flex-wrap  z-50">
           <div className="w-full px-4">
             <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
               <span className="block mb-2 text-lg font-semibold ">
@@ -19,7 +19,7 @@ const Portfolio = () => {
               </span>
               <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
                 You dream it, We film it              </h2>
-              <p className="text-base text-body-color">
+              <p className="text-base text-body-color text-gray-300">
               Step into a world where dreams take center stage and stories unfold with cinematic finesse.
 
               </p>
@@ -98,7 +98,7 @@ const Portfolio = () => {
             }
           />
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-center">
           <button className="bg-gray-300 m-1 p-2 md:m-3 md:p-2 rounded-lg text-center text-sm md:text-lg">
             view more
             <ArrowForward />
