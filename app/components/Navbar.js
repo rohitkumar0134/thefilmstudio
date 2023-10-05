@@ -13,9 +13,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useRouter } from 'next/navigation';
-import logo from '../assets/logo.png'
+import logo from '../assets/logo1.png'
 
-const pages = ['Portfolio', 'Pricing', 'About-us'];
+const pages = ['Portfolio',  'About-us','Contact-us'];
 
 function Navbar() {
   const router=useRouter()
@@ -135,8 +135,9 @@ console.log(logo)
               </Button>
             ))}
           </Box>
-
-          
+          <button
+          className='bg-gray-300 m-2 p-2 text-black rounded-lg'
+          >CALL-US</button>
         </Toolbar>
       </Container>
     </AppBar>

@@ -5,6 +5,8 @@ import Service from './components/Service'
 import Footer from './components/Footer'
 import Portfolio from './components/Portfolio'
 import Ourclient from './components/Ourclient'
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
+import { Experience } from './components/Experience'
 
 
 export default function Home() {
@@ -25,9 +27,9 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
     <Navbar/>
     <div className='flex items-center justify-center h-screen'>
     <h1 className='text-3xl text-center sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-300 leading-snug -mt-24 sm:mt-0'>
-    Book Music & Comedy Events
+    Welcome to The Film House
               <br />
-              anywhere in New York
+             
       </h1>
     </div>
     </div>
@@ -42,8 +44,16 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
   <div className=''>
   <Portfolio/>
   </div>
-
+<Experience/>
 <Ourclient/>
+<FloatingWhatsApp
+        phoneNumber="123456789"
+        accountName="Foo"
+        allowEsc
+        allowClickAway
+        notification
+        notificationSound
+      />
 
   <Footer/>
 

@@ -20,8 +20,8 @@ const Portfolio = () => {
               <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
                 You dream it, We film it              </h2>
               <p className="text-base text-body-color">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form
+              Step into a world where dreams take center stage and stories unfold with cinematic finesse.
+
               </p>
             </div>
           </div>
@@ -115,9 +115,9 @@ export default Portfolio;
 const ServiceCard = ({ icon, title, details }) => {
   return (
     <>
-      <div className="w-full p-4 md:w-1/2 lg:w-1/3 ">
+      <div className="w-full p-4 md:w-1/2 lg:w-1/3 rounded-md ">
         <LiteYouTubeEmbed
-          id="wwNq_ypzekM"
+          id="bviZnwdKCfk"
           title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
         />
       </div>

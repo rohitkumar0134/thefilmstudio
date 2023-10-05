@@ -16,7 +16,7 @@ function Footer() {
                                 <button className="bg-gray-100 text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
                                     <Twitter />
                                 </button>
-                                <button className="bg-gray-100 text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+                                <button className="bg-gray-100 text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" >
                                     <Facebook />
                                 </button>
                                 <button className="bg-gray-100 text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
@@ -68,9 +68,9 @@ function Footer() {
                     <div className="flex flex-wrap items-center md:justify-between justify-center">
                         <div className="w-full md:w-4/12 px-4 mx-auto text-center">
                             <div className="text-sm text-blueGray-500 font-semibold py-1">
-                                Copyright © <span id="get-current-year">2021</span>
-                                <a href="https://www.creative-tim.com/product/notus-js" className="text-blueGray-500 hover:text-gray-800" target="_blank" > Notus JS by </a>
-                                <a href="https://www.creative-tim.com?ref=njs-profile" className="text-blueGray-500 hover:text-blueGray-800">Creative Tim</a>.
+                                Copyright © <span id="get-current-year">2023</span>
+                                <a href="/" className="text-blueGray-500 hover:text-gray-800" target="_blank" >TheFilmHouse </a>
+                                <a href="mailto:rohit54pandit@gmail.com" className="text-blueGray-500 hover:text-blueGray-800">-Rohitkumar</a>.
                             </div>
                         </div>
                     </div>

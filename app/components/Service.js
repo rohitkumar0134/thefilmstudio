@@ -22,8 +22,8 @@ const Service = () => {
         </div>
         <div className="flex flex-wrap ">
           <ServiceCard
-            title="Refreshing Design"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Weddings"
+            details="we paint your love story with light and emotion, transforming your special day into a timelessmasterpiece."
             icon={
               <svg
                 width="32"
@@ -40,8 +40,8 @@ const Service = () => {
             }
           />
           <ServiceCard
-            title="Based on Tailwind CSS"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Web-Series"
+            details=" In the realm of web series, we embark on journeys of intrigue, laughter, and drama, crafting binge-worthy tales that keep audiences coming back for more."
             icon={
               <svg
                 width="39"
@@ -65,8 +65,8 @@ const Service = () => {
             }
           />
           <ServiceCard
-            title="100+ Components"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Short Films"
+            details="Short films are our canvas for artistic expression, where we breathe life into unique stories that linger in your thoughts long after thecreditsroll."
             icon={
               <svg
                 width="35"
@@ -95,8 +95,8 @@ const Service = () => {
             }
           />
           <ServiceCard
-            title="Speed Optimized"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            title="Drama"
+            details="In the world of drama, whether on stage or screen, we are the architects of emotions, orchestrating performances that resonate with authenticity."
             icon={
               <svg
                 width="35"

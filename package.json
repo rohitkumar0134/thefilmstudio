@@ -16,6 +16,7 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-floating-whatsapp": "^5.0.8",
     "react-lite-youtube-embed": "^2.3.52"
   },
   "devDependencies": {
