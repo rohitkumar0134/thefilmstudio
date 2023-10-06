@@ -1,9 +1,17 @@
 import React from 'react'
 import { Facebook, Instagram, Twitter, YouTube } from '@mui/icons-material'
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
 
 function Footer() {
     return (
         <>
+        <FloatingWhatsApp
+        phoneNumber="123456789"
+        accountName="Foo"
+        allowEsc
+        notification
+        notificationSound
+      />
             <footer className="relative bg-gray-300 pt-8 pb-6">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap text-left lg:text-left">

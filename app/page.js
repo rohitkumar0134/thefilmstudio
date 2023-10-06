@@ -46,14 +46,7 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
   </div>
 <Experience/>
 <Ourclient/>
-<FloatingWhatsApp
-        phoneNumber="123456789"
-        accountName="Foo"
-        allowEsc
-        allowClickAway
-        notification
-        notificationSound
-      />
+
 
   <Footer/>
 

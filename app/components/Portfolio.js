@@ -8,7 +8,7 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 const Portfolio = () => {
   return (
     <section className="pt-10 pb-12   bg-black">
-      <div className="bg-[url('https://j.gifs.com/KeX0g7.gif')] bg-cover">
+      <div className="bg-[url('https://j.gifs.com/KeX0g7.gif')] bg-cover bg-center">
 
 
         <div className="flex flex-wrap  z-50">
