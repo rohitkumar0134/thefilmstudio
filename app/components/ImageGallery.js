@@ -28,7 +28,7 @@ const ImageGallery = () => {
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((index) => (
           <div key={index}>
             <img
-              className="h-auto max-w-full rounded-lg"
+              className="h-[10em] object-cover object-center w-full rounded-lg"
               src={`https://images.unsplash.com/photo-1611523794717-4d1f87dabf3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fGNpbmVtYXRpY3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60`}
               alt=""
             />

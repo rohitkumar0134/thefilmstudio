@@ -115,7 +115,7 @@ export default Portfolio;
 const ServiceCard = ({ icon, title, details }) => {
   return (
     <>
-      <div className="w-full p-4 md:w-1/2 lg:w-1/3 rounded-md ">
+      <div className="mx-auto w-full p-4 md:w-1/2 lg:w-1/3 rounded-md ">
         <LiteYouTubeEmbed
           id="bviZnwdKCfk"
           title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
