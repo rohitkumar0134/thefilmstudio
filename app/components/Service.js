@@ -6,7 +6,7 @@ const Service = () => {
       img: "https://i.ibb.co/5jryT2P/Lovepik-com-400394223-wedding-photo-wedding-photo-1.png",
       title: "Weddings",
       description: "we paint your love story with light and emotion, transforming your special day into a timeless masterpiece.",
-    backgroundImage:"https://i.ibb.co/gR4BCfH/TBK-162.jpg"
+    backgroundImage:"https://i.ibb.co/99VVrQy/TBK-162-min.jpg"
     },
     {
       img: "https://i.imgur.com/4wouHGC.png",

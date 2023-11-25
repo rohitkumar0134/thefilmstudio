@@ -51,7 +51,6 @@ function Navbar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -73,8 +72,8 @@ function Navbar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
+              fontFamily: 'Bonheur Royale',
+              fontWeight: 200,
               letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -126,9 +125,16 @@ function Navbar() {
 
                   }
                   }}>
+                    
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
+               <a
+            className='bg-gray-300 m-2 mb-6 p-2 text-black rounded-lg'
+            href='tel:+918976487428'
+          > 
+            CALL-US
+          </a>
             </Menu>
           </Box>
           {/* large screen ka hai */}
@@ -153,11 +159,12 @@ function Navbar() {
             ))}
           </Box>
           <a
-            className='bg-gray-300 m-2 p-2 text-black rounded-lg'
-            href='tel:+918976487428'
-          >
-            CALL-US
-          </a>
+  className='bg-gray-300 m-2 p-2 text-black rounded-lg hidden md:inline-block'
+  href='tel:+918976487428'
+>
+  CALL-US
+</a>
+
 
         </Toolbar>
       </Container>
