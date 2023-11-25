@@ -17,7 +17,7 @@ export default function Home() {
 
   <div className="
 relative  bg-cover h-screen min-h-144
-bg-[url('https://i.imgur.com/et973ll.jpg')] 
+bg-[url('https://i.ibb.co/Ct9FFvg/Untitled-design.png')] 
 ">
   <div className="
 relative  bg-left bg-cover  h-screen min-h-144 

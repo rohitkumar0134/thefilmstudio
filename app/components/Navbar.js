@@ -55,7 +55,7 @@ function Navbar() {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
-              fontFamily: 'Bonheur Royale',
+              fontFamily: 'Josefin Sans',
             }}
           >
             TheFilmHouse
@@ -72,7 +72,7 @@ function Navbar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'Bonheur Royale',
+              fontFamily: 'Josefin Sans',
               fontWeight: 200,
               letterSpacing: '.1rem',
               color: 'inherit',

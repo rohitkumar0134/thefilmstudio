@@ -9,12 +9,12 @@ const Service = () => {
     backgroundImage:"https://i.ibb.co/99VVrQy/TBK-162-min.jpg"
     },
     {
-      img: "https://i.imgur.com/4wouHGC.png",
+      img: "https://i.ibb.co/XkndXjz/olhretric56m938tp80k38ibk0.png",
       title: "Commercials",
       description: "In the world of commercials, we craft narratives that not only sell products but also leave lasting impressions in hearts and minds."
     },
     {
-      img: "https://i.imgur.com/4wouHGC.png",
+      img: "https://i.ibb.co/30btg0j/24176934-removebg-preview.png",
       title: "Fashion",
       description: "Elevate your style with our fashion shoot. Vibrant colors, diverse styles, and attention to detail. Urban and natural settings, confident model poses.",
     },
@@ -79,7 +79,10 @@ const ServiceCard = ({ cardData }) => {
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >
-      <img src={cardData.img} alt="box_img" className="w-[75px] mb-4" />
+      <img src={cardData.img}
+       alt="box_img" className="w-[75px] mb-4"
+      
+       />
       <p className="text-[24px] font-bold uppercase mb-7">{cardData.title}</p>
       <p className="text-[15px] font-medium leading-2 w-full">
         {cardData.description}
