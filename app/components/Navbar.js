@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,16 +15,16 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useRouter } from 'next/navigation';
 import logo from '../assets/logo1.png'
 
-const pages = ['Portfolio',  'About-us','Contact-us'];
+const pages = ["Home",'Portfolio', 'About-us', 'Contact-us'];
 
 function Navbar() {
-  const router=useRouter()
+  const router = useRouter()
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-console.log(logo)
+  console.log(logo)
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -34,13 +34,13 @@ console.log(logo)
 
   return (
     <AppBar position="static"
-    sx={{ backgroundColor: 'transparent' }}
+      sx={{ backgroundColor: 'transparent' }}
     >
-      <Container maxWidth="xl" 
-      sx={{ color: 'rgb(209 213 219)' }}
+      <Container maxWidth="xl"
+        sx={{ color: 'rgb(209 213 219)' }}
       >
         <Toolbar disableGutters>
-<img src={logo.src} className=' logo mr-1 h-7 md:h-9 md:none filter grayscale'/>
+          <img src={logo.src} className=' logo mr-1 h-7 md:h-9 md:none filter grayscale' />
 
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
@@ -56,12 +56,13 @@ console.log(logo)
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              fontFamily: 'Bonheur Royale',
             }}
           >
             TheFilmHouse
           </Typography>
 
-  
+
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
@@ -90,10 +91,10 @@ console.log(logo)
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-             
+
             >
-              <MenuIcon 
-              fontSize='large'
+              <MenuIcon
+                fontSize='large'
               />
             </IconButton>
             <Menu
@@ -115,29 +116,49 @@ console.log(logo)
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} 
-                 href={`/${page}`} onClick={()=>router.push(page)}>
+                <MenuItem key={page}
+                 onClick={() => {
+                  if(page=='Home'){
+                    router.push("/")
+
+                  }else{
+                    router.push(page)
+
+                  }
+                  }}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           {/* large screen ka hai */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent: 'center'  }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={()=>{console.log("hwello")}}
-                href={`/${page}`}
-                sx={{ my: 2,mx:4, color: 'inherit', display: 'block' }}
+                onClick={() => {
+                  if(page=='Home'){
+                    router.push("/")
+
+                  }else{
+                    router.push(page)
+
+                  }
+                  }}
+               
+                sx={{ my: 2, mx: 4, color: 'inherit', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          <button
-          className='bg-gray-300 m-2 p-2 text-black rounded-lg'
-          >CALL-US</button>
+          <a
+            className='bg-gray-300 m-2 p-2 text-black rounded-lg'
+            href='tel:+918976487428'
+          >
+            CALL-US
+          </a>
+
         </Toolbar>
       </Container>
     </AppBar>

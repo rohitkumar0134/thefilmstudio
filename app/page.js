@@ -7,6 +7,8 @@ import Portfolio from './components/Portfolio'
 import Ourclient from './components/Ourclient'
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import { Experience } from './components/Experience'
+import TeamMemberCard from './components/TeamMemberCard'
+import FeaturesGrid from './components/FeaturesGrid'
 
 
 export default function Home() {
@@ -45,6 +47,8 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
   <Portfolio/>
   </div>
 <Experience/>
+{/* <TeamMemberCard/>
+<FeaturesGrid/> */}
 <Ourclient/>
 
 

@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Service = () => {
+  const cardList = [
+    {
+      img: "https://i.ibb.co/5jryT2P/Lovepik-com-400394223-wedding-photo-wedding-photo-1.png",
+      title: "Weddings",
+      description: "we paint your love story with light and emotion, transforming your special day into a timeless masterpiece.",
+    backgroundImage:"https://i.ibb.co/gR4BCfH/TBK-162.jpg"
+    },
+    {
+      img: "https://i.imgur.com/4wouHGC.png",
+      title: "Commercials",
+      description: "In the world of commercials, we craft narratives that not only sell products but also leave lasting impressions in hearts and minds."
+    },
+    {
+      img: "https://i.imgur.com/4wouHGC.png",
+      title: "Fashion",
+      description: "Elevate your style with our fashion shoot. Vibrant colors, diverse styles, and attention to detail. Urban and natural settings, confident model poses.",
+    },
+    {
+      img: "https://i.imgur.com/UdPvj8T.png",
+      title: "Short Films",
+      description: "Short films are our canvas for artistic expression, where we breathe life into unique stories that linger in your thoughts long after the credits roll.",
+    },
+  ];
+
   return (
     <section className="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] bg-black">
       <div className="">
@@ -24,7 +48,9 @@ const Service = () => {
       <div className="w-full  px-[2.5rem]">
         {/* about cards */}
         <div className="about-cards flex gap-10 flex-col md:flex-row">
-          <ServiceCard />
+         {cardList.map((card, id) => (
+        <ServiceCard key={id} cardData={card} />
+      ))}
         </div>
       </div>
     </section>
@@ -35,44 +61,31 @@ const Service = () => {
 
 // export default Service;
 
-const ServiceCard = ({ icon, title, details }) => {
+const ServiceCard = ({ cardData }) => {
   // Card data
- const cardList = [
-  {
-    img: "https://i.imgur.com/w5HYiQZ.png",
-    title: "Growth",
-    description:
-      " with you to develop a personalized strategy aimed at guiding you toward success through incremental progress.Our group of specialists will collaborate with you to develop aOur group of specialists will collaborate with you to develop aOur group of specialists will collaborate with you to develop a",
-  },
-  {
-    img: "https://i.imgur.com/4wouHGC.png",
-    title: "Fitness",
-    description:
-      "Offering a diverse range of exercises for your selection, you'll have all the resources necessary to attain the peak of your physical fitness.",
-  },
-  {
-    img: "https://i.imgur.com/UdPvj8T.png",
-    title: "Diet",
-    description:
-      "Our team will collaborate with you to craft a tailor-made meal plan designed to assist you in achieving your distinct health objectives.",
-  },
-];
+  const [isHovered, setIsHovered] = useState(false);
+
+  const divStyle = {
+    backgroundImage: isHovered
+      ? `url("${cardData.backgroundImage}")`
+      : "Initial", // Use the card image when not hovered
+    // Add other styles as needed
+  };
+
   return (
-    <>
-       {cardList.map((card, id) => (
-        <div
-          key={id}
-          className="flex flex-col cursor-pointer bg-white justify-center py-6 px-10 text-center items-center mt-12 rounded-tl-[35px] rounded-br-[35px] shadow-2xl md:min-h-[340px] w-full card-item-div max-w-screen-md min-h-[260px]"
-        >
-          <img src={card.img} alt="box_img" className="w-[75px] mb-4" />
-          <p className="text-[24px] font-bold uppercase mb-7">{card.title}</p>
-          <p className="text-[15px] font-medium leading-2 w-full">
-            {card.description}
-          </p>
-        </div>
-      ))}
-    </>
+    <div
+      className="flex flex-col cursor-pointer bg-white justify-center py-6 px-10 text-center items-center mt-12 rounded-tl-[35px] rounded-br-[35px] shadow-2xl md:min-h-[340px] w-full card-item-div max-w-screen-md min-h-[260px]"
+      style={divStyle}
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
+    >
+      <img src={cardData.img} alt="box_img" className="w-[75px] mb-4" />
+      <p className="text-[24px] font-bold uppercase mb-7">{cardData.title}</p>
+      <p className="text-[15px] font-medium leading-2 w-full">
+        {cardData.description}
+      </p>
+    </div>
   );
-}
+};
 
 export default Service;
