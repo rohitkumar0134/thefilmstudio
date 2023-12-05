@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "generate": "prisma generate",
+    "migrate": "prisma migrate dev",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,6 +17,8 @@
     "@mui/material": "^5.14.11",
     "@prisma/client": "^5.4.1",
     "animejs": "^3.2.1",
+    "axios": "^1.6.2",
+    "glightbox": "^3.2.0",
     "next": "latest",
     "prisma": "^5.4.1",
     "react": "latest",
