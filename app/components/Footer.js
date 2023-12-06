@@ -71,27 +71,22 @@ function Footer() {
                                 <div className="w-full lg:w-4/12 px-4">
                                     <span className="block uppercase text-blueGray-500 text-mb font-semibold mb-2">Company</span>
                                     <ul className="list-unstyled">
+                                       
                                         <li>
                                             <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-profile">
-                                                MIT License
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://creative-tim.com/terms?ref=njs-profile">
+                                                href="/termandcondition">
                                                 Terms &amp; Conditions
                                             </a>
                                         </li>
                                         <li>
                                             <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://creative-tim.com/privacy?ref=njs-profile">
+                                                href="/About-us">
                                                About Us
                                             </a>
                                         </li>
                                         <li>
                                             <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://creative-tim.com/contact-us?ref=njs-profile">
+                                                href="/Contact-us">
                                                 Contact Us
                                             </a>
                                         </li>

@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 async function seedDatabase() {
   // Clear existing data
-  await prisma.gallery.deleteMany();
+  // await prisma.gallery.deleteMany();
 
   // Insert new data
   for (let i = 0; i < 5; i++) {
@@ -14,10 +14,18 @@ async function seedDatabase() {
         image: `https://biati-digital.github.io/glightbox/demo/img/large/gm${i + 1}.jpg`,
         video: "",
         status: 1,
+        category:i
       },
     });
   }
-
+  for (let i = 0; i < 5; i++) {
+    await prisma.categories.create({
+      data: {
+        status: 1,
+        category:`catg ${i}`
+      },
+    });
+  }
   console.log('Seed completed');
 }
 

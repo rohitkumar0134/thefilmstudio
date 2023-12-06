@@ -15,4 +15,11 @@ model gallery {
   image  String?
   video String?
   status Int
+  category Int
+}
+
+model categories {
+  id    Int     @id @default(autoincrement())
+  status Int
+  category String
 }
