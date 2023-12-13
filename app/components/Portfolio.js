@@ -1,5 +1,6 @@
 import { ArrowForward } from "@mui/icons-material";
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
+import BeforeAfter from "./BeforeAfter";
 
 
 
@@ -30,22 +31,34 @@ const Portfolio = () => {
               <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
                 You dream it, We film it              </h2>
               <p className="text-base text-body-color text-gray-300">
-              Step into a world where dreams take center stage and stories unfold with cinematic finesse.
+                Step into a world where dreams take center stage and stories unfold with cinematic finesse.
 
               </p>
             </div>
           </div>
         </div>
         <div className="flex flex-wrap ">
-          <ServiceCard
-            
-          />
-          <ServiceCard
-           
-          />
-          <ServiceCard
-            
-          />
+          <BeforeAfter />
+          <div className="mx-auto w-full p-4 md:w-1/2 lg:w-1/3 rounded-md ">
+            <a href="https://www.youtube.com/watch?v=bviZnwdKCfk&ab_channel=TheFilmHouseOfficial" class="glightbox">
+              <img src="https://i.ibb.co/QrMkJkd/377789794-681959780656958-6239793211952923349-n.jpg"
+                alt="https://i.ibb.co/QrMkJkd/377789794-681959780656958-6239793211952923349-n.jpg"
+                className="w-full rounded-lg       
+  transition-transform duration-300 ease-in-out transform hover:scale-110 cursor-pointer mx-2"
+              />
+            </a>
+          </div>
+
+          <div className="mx-auto w-full p-4 md:w-1/2 lg:w-1/3 rounded-md ">
+            <a href="https://i.ibb.co/fkdZ76X/378063640-841419490995085-4222226732765789378-n.jpg" class="glightbox">
+              <img src="https://i.ibb.co/fkdZ76X/378063640-841419490995085-4222226732765789378-n.jpg"
+                alt="https://biati-digital.github.io/glightbox/demo/img/small/gm10.jpg"
+                className="w-full rounded-lg       
+  transition-transform duration-300 ease-in-out transform hover:scale-110 cursor-pointer mx-2"
+              />
+
+            </a>
+          </div>
         </div>
         <div className="flex justify-center">
           <button className="bg-gray-300 m-1 p-2 md:m-3 md:p-2 rounded-lg text-center text-sm md:text-lg">
@@ -53,7 +66,7 @@ const Portfolio = () => {
             <ArrowForward />
           </button>
         </div>
-    
+
       </div>
     </section>
   );
@@ -61,24 +74,4 @@ const Portfolio = () => {
 
 export default Portfolio;
 
-const ServiceCard = ({ icon, title, details }) => {
-  return (
-    <>
-      <div className="mx-auto w-full p-4 md:w-1/2 lg:w-1/3 rounded-md ">
-      
-             <a href="https://www.youtube.com/watch?v=bviZnwdKCfk&ab_channel=TheFilmHouseOfficial" class="glightbox">
-          <img src="https://biati-digital.github.io/glightbox/demo/img/small/gm10.jpg" 
-          alt="https://biati-digital.github.io/glightbox/demo/img/small/gm10.jpg" 
-          className="w-full rounded-lg  
-              
-          transition-transform duration-300 ease-in-out transform hover:scale-110 cursor-pointer"
 
-          
-        
-        />
-
-        </a>
-      </div>
-    </>
-  );
-};

@@ -26,6 +26,24 @@
     color: white;
   }
 
+  .auth-input {
+    height: 3.8rem;
+    background-color: #f2f4f9;
+    padding: 0 15px;
+    border-radius: 4px;
+    border: 0;
+    margin-bottom: 10px;
+  }
+
+  .filter-silver {
+    filter: grayscale(100%) brightness-80 contrast-110;
+}
+  
+  .auth-input:focus {
+    background-color: #f2f4f9;
+    color: #000;
+  }
+  
 .textdecorclass {
    
     background: linear-gradient(to right, hsl(0, 0%, 30%) 0, hsl(0, 0%, 100%) 10%, hsl(0, 0%, 30%) 20%);
