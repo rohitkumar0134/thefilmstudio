@@ -3,7 +3,7 @@ import React from 'react'
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
 
-function BeforeAfter() {
+function BeforeAfter({before,after}) {
   // Pass this as a delimiterIconStyles property
   const delimiterIconStyles = {
     width: '1.7rem',
@@ -15,13 +15,13 @@ function BeforeAfter() {
 
   return (
     <>
-      <div className='m-2 mx-4'>
+      <div className='mx-2 rounded'>
         <ReactBeforeSliderComponent
           firstImage={{
-            imageUrl: "https://smeleshkin.github.io/react-before-after-slider-component//assets/image2.jpg"
+            imageUrl: before
           }}
           secondImage={{
-            imageUrl: "https://smeleshkin.github.io/react-before-after-slider-component//assets/image1.jpg"
+            imageUrl: after
           }}
           delimiterIconStyles={delimiterIconStyles}
         />

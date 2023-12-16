@@ -11,7 +11,7 @@ const prisma = new PrismaClient()
 export async function GET(request) {
     const url = new URL(request.url);
     const category = url.searchParams.get("cat");
-    console.log(category);
+    // console.log(category);
 
     if (category) {
         const gallerydata = await prisma.gallery.findMany({

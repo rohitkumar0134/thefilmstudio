@@ -1,11 +1,13 @@
 import { ArrowForward } from "@mui/icons-material";
 import React, { useEffect } from "react";
 import BeforeAfter from "./BeforeAfter";
+import { useRouter } from "next/navigation";
 
 
 
 
 const Portfolio = () => {
+  const router=useRouter()
   useEffect(() => {
     // Load GLightbox only on the client side
     if (typeof window !== 'undefined') {
@@ -38,8 +40,21 @@ const Portfolio = () => {
           </div>
         </div>
         <div className="flex flex-wrap ">
-          <BeforeAfter />
-          <div className="mx-auto w-full p-4 md:w-1/2 lg:w-1/3 rounded-md ">
+          <div className="mx-auto w-full px-4 md:w-1/2 lg:w-1/3 rounded-md flex flex-col items-center">
+            <BeforeAfter
+              before={"https://i.ibb.co/SB1Yw5b/006-626120c91bc23-88f0-1.jpg"}
+              after={"https://i.ibb.co/4fmct4p/006-626120c91bcd23-880.jpg"}
+            />
+
+            <p
+              className="text-center text-gray-200 text-lg font-bold mt-2"
+            >
+              Slide to see before after
+            </p>
+          </div>
+
+
+          <div className="mx-auto w-full p-4 md:w-1/2 lg:w-1/3 rounded-md flex flex-col items-center">
             <a href="https://www.youtube.com/watch?v=bviZnwdKCfk&ab_channel=TheFilmHouseOfficial" class="glightbox">
               <img src="https://i.ibb.co/QrMkJkd/377789794-681959780656958-6239793211952923349-n.jpg"
                 alt="https://i.ibb.co/QrMkJkd/377789794-681959780656958-6239793211952923349-n.jpg"
@@ -47,9 +62,14 @@ const Portfolio = () => {
   transition-transform duration-300 ease-in-out transform hover:scale-110 cursor-pointer mx-2"
               />
             </a>
+            <p
+              className="text-center text-gray-200 text-lg font-bold mt-3"
+            >
+              Click image to see video
+            </p>
           </div>
 
-          <div className="mx-auto w-full p-4 md:w-1/2 lg:w-1/3 rounded-md ">
+          <div className="mx-auto w-full p-4 md:w-1/2 lg:w-1/3 rounded-md flex flex-col items-center">
             <a href="https://i.ibb.co/fkdZ76X/378063640-841419490995085-4222226732765789378-n.jpg" class="glightbox">
               <img src="https://i.ibb.co/fkdZ76X/378063640-841419490995085-4222226732765789378-n.jpg"
                 alt="https://biati-digital.github.io/glightbox/demo/img/small/gm10.jpg"
@@ -58,10 +78,17 @@ const Portfolio = () => {
               />
 
             </a>
+            <p
+              className="text-center text-gray-200 text-lg font-bold mt-3"
+            >
+              Click image to see video
+            </p>
           </div>
         </div>
         <div className="flex justify-center">
-          <button className="bg-gray-300 m-1 p-2 md:m-3 md:p-2 rounded-lg text-center text-sm md:text-lg">
+          <button 
+          onClick={()=>router.push("/portfolio")}
+          className="bg-gray-300 m-1 p-2 md:m-3 md:p-2 rounded-lg text-center text-sm md:text-lg">
             view more
             <ArrowForward />
           </button>

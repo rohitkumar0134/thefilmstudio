@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useRouter } from 'next/navigation';
 import logo from '../assets/logo1.png'
 
-const pages = ["Home",'Portfolio', 'About-us', 'Contact-us'];
+const pages = ["Home",'portfolio', 'About-us', 'Contact-us'];
 
 function Navbar() {
   const router = useRouter()

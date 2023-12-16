@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AddUpdateImage from './AddUpdateImage';
 
 const Gallery = () => {
     const [galleryData, setGalleryData] = useState(null);
     const [selectedCat, setSelectedCat] = useState('ALL');
     const [category, setCategory] = useState([]);
     const [loading, setLoading] = useState(false)
+    const[openmodal,setOpenmodal]=useState(false)
+    const[editdata,setEditdata]=useState("")
+
+    
+
+    const close_drawer=()=>{
+        setOpenmodal(false)
+        setEditdata("")
+
+    }
 
 
 
@@ -78,12 +89,16 @@ const Gallery = () => {
             }
             <>
             <div>
-            <button className='absolute right-0 m-2 bg-blue-500 p-2 px-4 rounded-md text-white'>
+            <button 
+            onClick={()=>{
+                setOpenmodal(true)
+            }}
+            className='absolute right-0 m-2 bg-blue-500 p-2 px-4 rounded-md text-white'>
                     Add New image +
                 </button>
             </div>
                 
-                <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
+                <div className="flex items-center justify-center py-4 md:py-8 flex-wrap mt-12 md:mt-2 lg:mt-2">
                     <button
 
                         type="button"
@@ -135,7 +150,14 @@ const Gallery = () => {
                                 <button className="mx-4 bg-red-500 p-2 px-4 rounded" onClick={() => handleDelete(data.id)}>
                                     Delete
                                 </button>
-                                <button className="mx-4 bg-slate-500 p-2 px-4 rounded" onClick={() => handleEdit(data.id)}>
+                                <button 
+                                 onClick={()=>{
+                                    setEditdata(data)
+                                    setOpenmodal(true)
+                                }}
+                                
+
+                                className="mx-4 bg-slate-500 p-2 px-4 rounded" >
                                     Edit
                                 </button>
                             </div>
@@ -164,6 +186,12 @@ const Gallery = () => {
                     </a>
                 </div>
             </>
+{openmodal&&
+            <AddUpdateImage
+            close_drawer={close_drawer}
+            openmodal={openmodal}
+            data={editdata}
+            />}
 
         </>
     );
