@@ -26,7 +26,7 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
         console.log(`Delete button clicked for ID: ${id}`);
     };
 
-    const handleAdd = () => {
+    const handleAdd =async () => {
         // Add your add logic here
         console.log("Add button clicked");
         const postdata = {
@@ -38,7 +38,28 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
 
         }
         console.log(postdata)
+        const {data}=await axios.put("/api/admin/gallery",postdata)
+      
     };
+
+    const handleUpdate =async (_id) => {
+        // Add your add logic here
+        console.log("Add button clicked");
+        const postdata = {
+            thumbnailimg: thumbnail,
+            image: type=="image"?image:"",
+            video: type=="image"?"":video,
+            status: status,
+            category: categoryid,
+            _id:_id
+        }
+        console.log(postdata)
+        const {data}=await axios.put("/api/admin/gallery",postdata)
+      
+    };
+
+
+
     const _close_drawer = () => {
         setCategoryid("")
         setImage("")
@@ -88,7 +109,7 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
                         >
                             <option value="" disabled>Select category</option>
                             {category?.map((cat) => (
-                                <option key={cat.id} value={cat.id}>
+                                <option key={cat._id} value={cat._id}>
                                     {cat.category}
                                 </option>
                             ))}
@@ -174,9 +195,13 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
                         </button>
                     </div>
                     <div className='col-span-2'>
-                        <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={handleAdd}>
+                     {data?
+                     <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={()=>handleUpdate(data._id)}>
+                     Update
+                 </button>
+                     :   <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={handleAdd}>
                             Add
-                        </button>
+                        </button>}
                     </div>
                 </div>
                 <div className='mb-2' />

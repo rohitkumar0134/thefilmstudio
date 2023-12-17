@@ -117,7 +117,7 @@ const Gallery = () => {
                             type="button"
                             className={cat.category === selectedCat ? selectedCss : notSelectedCss}
                             onClick={() => {
-                                fetchGalleryDatawithCat(cat.id)
+                                fetchGalleryDatawithCat(cat._id)
                                 setSelectedCat(cat.category)
                             }
 

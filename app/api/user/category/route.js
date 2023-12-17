@@ -1,24 +1,13 @@
 
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
-
+import connectMongoDB from '@/lib/mongodb';
+import Category from '@/models/category';
 
 
 export async function GET(request) {
-  
+  await connectMongoDB()
+const categories= await Category.find().sort({_id:-1})
 
-    const categories = await prisma.categories.findMany({
-        where: {
-            status: 1
-        },
-        orderBy: {
-            id: 'desc',
-        }
-        ,
-
-    })
     return NextResponse.json(categories);
 
 }
