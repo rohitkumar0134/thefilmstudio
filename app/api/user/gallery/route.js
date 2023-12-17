@@ -1,10 +1,8 @@
 
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import connectMongoDB from '@/lib/mongodb';
 import Gallery from '@/models/gallery';
-
-const prisma = new PrismaClient()
+ismaClient()
 
 
 
