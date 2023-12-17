@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server'
 import connectMongoDB from '@/lib/mongodb';
 import Gallery from '@/models/gallery';
-ismaClient()
+
 
 
 
