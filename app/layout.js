@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
 
    
 </head>
-      <body className={`${inter.className} bg-gray-200`}>
+      <body className={`${inter.className} bg-stone-900`}>
       {giveChildrenAccToRoute()}
 
       </body>

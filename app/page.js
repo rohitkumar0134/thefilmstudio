@@ -6,8 +6,21 @@ import Footer from './components/Footer'
 import Portfolio from './components/Portfolio'
 import Ourclient from './components/Ourclient'
 import { Experience } from './components/Experience'
+import { useInView } from 'react-intersection-observer';
+import { useEffect, useRef, useState } from 'react';
 
+const AnimatedComponent = ({ children }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '-50px 0px', // adjust the root margin as needed
+  });
 
+  return (
+    <div ref={ref} className={`fade-in-section ${inView ? 'is-visible' : ''}`}>
+      {children}
+    </div>
+  );
+};
 
 export default function Home() {
   return (
@@ -33,21 +46,35 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
 
         </div>
 
+
       </div>
-      <div className=''>
+      <div class="banner-angled-line"></div>
+      <AnimatedComponent>
         <Service />
-        <hr className='' />
-      </div>
-      <div className=''>
+      </AnimatedComponent>
+      <hr className="" />
+
+      <AnimatedComponent>
         <Portfolio />
-      </div>
-      <Experience />
+      </AnimatedComponent>
+
+      <AnimatedComponent>
+        <Experience />
+      </AnimatedComponent>
+      {/* <Experience /> */}
       {/* <TeamMemberCard/>
 <FeaturesGrid/> */}
-      <Ourclient />
+
+      <AnimatedComponent>
+        <Ourclient />
+
+      </AnimatedComponent>
 
 
-      <Footer />
+      <AnimatedComponent>
+        <Footer />
+      </AnimatedComponent>
+    
 
 
 

@@ -20,7 +20,7 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <section className="pt-10 pb-12   bg-black">
+    <section className="pt-10 pb-12  ">
       <div className="bg-[url('https://j.gifs.com/KeX0g7.gif')] bg-cover bg-center">
 
 

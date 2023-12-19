@@ -48,7 +48,7 @@ const SplashScreen = ({finishLoading}) => {
   }, [])
 
   return (
-    <div className="splash-screen bg-black h-screen flex justify-center items-center flex-col gap-10">
+    <div className="splash-screen  h-screen flex justify-center items-center flex-col gap-10">
           <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

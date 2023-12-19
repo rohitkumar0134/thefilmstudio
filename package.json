@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-
     "lint": "next lint"
   },
   "dependencies": {
@@ -25,7 +24,8 @@
     "react-before-after-slider-component": "^1.1.8",
     "react-countup": "^6.5.0",
     "react-dom": "latest",
-    "react-floating-whatsapp": "^5.0.8"
+    "react-floating-whatsapp": "^5.0.8",
+    "react-intersection-observer": "^9.5.3"
   },
   "devDependencies": {
     "autoprefixer": "latest",
