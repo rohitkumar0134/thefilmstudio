@@ -52,7 +52,7 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
       <AnimatedComponent>
         <Service />
       </AnimatedComponent>
-      <hr className="" />
+     
 
       <AnimatedComponent>
         <Portfolio />

@@ -20,7 +20,7 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <section className="pt-10 pb-12  ">
+    <section className=" pb-12  ">
       <div className="bg-[url('https://j.gifs.com/KeX0g7.gif')] bg-cover bg-center">
 
 
@@ -88,7 +88,7 @@ const Portfolio = () => {
         <div className="flex justify-center">
           <button 
           onClick={()=>router.push("/portfolio")}
-          className="bg-gray-300 m-1 p-2 md:m-3 md:p-2 rounded-lg text-center text-sm md:text-lg">
+          className="border-black border-4 m-1 p-2 md:m-3 md:p-2 rounded-lg text-center text-sm md:text-2xl font-bold text-black">
             view more
             <ArrowForward />
           </button>
