@@ -5,15 +5,7 @@ import { FloatingWhatsApp } from 'react-floating-whatsapp'
 function Footer() {
     return (
         <>
-            <FloatingWhatsApp
-                phoneNumber="+918976487428"
-                accountName="The Film House"
-                allowEsc
-                notification
-                notificationSound
-                avatar={"https://i.ibb.co/P5L7r9J/TFM-logo-White-potrait-3x.jpg"}
-                chatMessage={"Welcome to The Film House,e bring your imagination to life, one frame at a time."}
-            />
+            
             <footer className="relative pt-8 pb-6">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap text-left lg:text-left">

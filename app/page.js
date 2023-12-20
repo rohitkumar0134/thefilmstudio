@@ -8,6 +8,8 @@ import Ourclient from './components/Ourclient'
 import { Experience } from './components/Experience'
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useRef, useState } from 'react';
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
+import Story from './components/Story'
 
 const AnimatedComponent = ({ children }) => {
   const [ref, inView] = useInView({
@@ -49,9 +51,12 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
 
       </div>
       <div class="banner-angled-line"></div>
-      <AnimatedComponent>
+      <div>
+        <Story/>
+      </div>
+      {/* <AnimatedComponent>
         <Service />
-      </AnimatedComponent>
+      </AnimatedComponent> */}
      
 
       <AnimatedComponent>
@@ -75,7 +80,15 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
         <Footer />
       </AnimatedComponent>
     
-
+      <FloatingWhatsApp
+                phoneNumber="+918976487428"
+                accountName="The Film House"
+                allowEsc
+                notification
+                notificationSound
+                avatar={"https://i.ibb.co/P5L7r9J/TFM-logo-White-potrait-3x.jpg"}
+                chatMessage={"Welcome to The Film House,e bring your imagination to life, one frame at a time."}
+            />
 
 
     </>
