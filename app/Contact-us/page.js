@@ -1,9 +1,9 @@
 
 "use client"
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/common/Navbar'
 import Footer from '../components/Footer'
-import Ourclient from '../components/Ourclient'
+import Ourclient from '../components/home/Ourclient'
 
 function page() {
   return (

@@ -1,6 +1,6 @@
 import { ArrowForward } from "@mui/icons-material";
 import React, { useEffect } from "react";
-import BeforeAfter from "./BeforeAfter";
+import BeforeAfter from "../BeforeAfter";
 import { useRouter } from "next/navigation";
 
 

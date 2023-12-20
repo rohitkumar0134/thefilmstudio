@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import Aos from "aos";
+import React, { useEffect, useState } from "react";
 
 const Service = () => {
+
+  useEffect(() => {
+    Aos.init();
+  }, [])
+
   const cardList = [
     {
       img: "https://i.ibb.co/5jryT2P/Lovepik-com-400394223-wedding-photo-wedding-photo-1.png",
@@ -26,7 +32,7 @@ const Service = () => {
   ];
 
   return (
-    <section className=" pb-8 lg:pt-[120px] lg:pb-[90px] ">
+    <section className=" pb-8 lg:pt-[120px]  ">
       <div className="">
         <div className="flex flex-wrap text-gray-300 ">
           <div className="w-full px-4">
@@ -47,7 +53,8 @@ const Service = () => {
         <section className=" container mx-auto flex flex-col justify-between gap-2 pb-[4rem]">
       <div className="w-full  px-[2.5rem]">
         {/* about cards */}
-        <div className="about-cards flex gap-10 flex-col md:flex-row">
+        <div 
+        className="about-cards flex gap-10 flex-col md:flex-row">
          {cardList.map((card, id) => (
         <ServiceCard key={id} cardData={card} />
       ))}
@@ -74,6 +81,8 @@ const ServiceCard = ({ cardData }) => {
 
   return (
     <div
+    data-aos="fade-left"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
+
       className="flex flex-col cursor-pointer bg-white justify-center py-6 px-10 text-center items-center mt-12 rounded-tl-[35px] rounded-br-[35px] shadow-2xl md:min-h-[340px] w-full card-item-div max-w-screen-md min-h-[260px]"
       style={divStyle}
       onMouseOver={() => setIsHovered(true)}

@@ -1,15 +1,16 @@
 "use client"
 import Image from 'next/image'
-import Navbar from './components/Navbar'
+import Navbar from './components/common/Navbar'
 import Service from './components/Service'
 import Footer from './components/Footer'
-import Portfolio from './components/Portfolio'
-import Ourclient from './components/Ourclient'
-import { Experience } from './components/Experience'
+import Portfolio from './components/home/Portfolio'
+import Ourclient from './components/home/Ourclient'
+import { Experience } from './components/home/Experience'
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useRef, useState } from 'react';
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
-import Story from './components/Story'
+import Intro from './components/home/Intro'
+import Aos from 'aos'
 
 const AnimatedComponent = ({ children }) => {
   const [ref, inView] = useInView({
@@ -25,6 +26,10 @@ const AnimatedComponent = ({ children }) => {
 };
 
 export default function Home() {
+  useEffect(() => {
+    Aos.init();
+  }, [])
+
   return (
     <>
 
@@ -45,50 +50,56 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
               </h1>
             </div>
           </div>
-
         </div>
-
-
       </div>
-      <div class="banner-angled-line"></div>
       <div>
-        <Story/>
+        <Intro />
       </div>
       {/* <AnimatedComponent>
         <Service />
       </AnimatedComponent> */}
-     
 
-      <AnimatedComponent>
+
+      <div
+      data-aos="fade-up"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out" 
+      >
         <Portfolio />
-      </AnimatedComponent>
 
-      <AnimatedComponent>
-        <Experience />
-      </AnimatedComponent>
+
+      </div>
+
+      <div
+      data-aos="fade-up"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out" 
+      >
+           <Experience />
+      </div>
       {/* <Experience /> */}
       {/* <TeamMemberCard/>
 <FeaturesGrid/> */}
 
-      <AnimatedComponent>
-        <Ourclient />
+<div
+      data-aos="fade-up"  data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out" 
+      >
+          <Ourclient />
+      </div>
+  
 
-      </AnimatedComponent>
+      <div
+      data-aos="fade-up"  data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out" 
+      >
+          <Footer />
+      </div>
+   
 
-
-      <AnimatedComponent>
-        <Footer />
-      </AnimatedComponent>
-    
       <FloatingWhatsApp
-                phoneNumber="+918976487428"
-                accountName="The Film House"
-                allowEsc
-                notification
-                notificationSound
-                avatar={"https://i.ibb.co/P5L7r9J/TFM-logo-White-potrait-3x.jpg"}
-                chatMessage={"Welcome to The Film House,e bring your imagination to life, one frame at a time."}
-            />
+        phoneNumber="+918976487428"
+        accountName="The Film House"
+        allowEsc
+        notification
+        notificationSound
+        avatar={"https://i.ibb.co/P5L7r9J/TFM-logo-White-potrait-3x.jpg"}
+        chatMessage={"Welcome to The Film House,e bring your imagination to life, one frame at a time."}
+      />
 
 
     </>

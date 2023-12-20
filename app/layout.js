@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import SplashScreen from './components/SplashScreen'
+import 'aos/dist/aos.css';
 
 const inter = Inter({ subsets: ['latin'] })
 

@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/common/Navbar'
 import BeforeAfter from '../components/BeforeAfter'
 
 function page() {
