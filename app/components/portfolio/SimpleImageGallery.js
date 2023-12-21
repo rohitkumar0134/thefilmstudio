@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Aos from 'aos';
 
 const SimpleImageGallery = () => {
   const [galleryData, setGalleryData] = useState(null);
@@ -7,14 +8,17 @@ const SimpleImageGallery = () => {
   const [category, setCategory] = useState([]);
   const [loading,setLoading]=useState(false)
 
+  useEffect(() => {
+    Aos.init();
+  }, [galleryData])
 
 
   const notSelectedCss =
-    'text-gray-200 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-black focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:text-white dark:focus:ring-gray-800';
+    'text-gray-200 border border-white hover:border-gray-200 dark:border-gray-200 dark:bg-gray-900 dark:hover:border-gray-700 bg-black focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:text-white dark:focus:ring-gray-800';
   const selectedCss =
-    'text-gray-700 hover:text-white border border-gray-600 bg-white hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800';
+    'text-gray-700 hover:text-white border border-gray-600 bg-white hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:border-white-500 dark:text-white dark:hover:text-white dark:hover:bg-white-500 dark:bg-gray-900 dark:focus:ring-white-800';
 
-  const categories = ['ALL', 'Shoes', 'Bags', 'Electronics', 'Gaming'];
+
 
 
   useEffect(() => {
@@ -81,7 +85,9 @@ const SimpleImageGallery = () => {
 
         
         <>
-          <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
+          <div 
+            data-aos="fade-right"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
+          className="flex items-center justify-center py-4 md:py-8 flex-wrap">
             <button
 
               type="button"
@@ -112,7 +118,9 @@ const SimpleImageGallery = () => {
           </div>
 
 
-          <div className="grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-4 mx-2">
+          <div 
+            data-aos="fade-up"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
+          className="grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 gap-4 mx-2">
             {galleryData?.map((data) => (
               <a key={data.id} href={data.image ? data.image : "https://youtu.be/FtJRfsJgtYI?si=scSYUF6Y0_Zivaia"}
                 className="glightbox md:p-2"

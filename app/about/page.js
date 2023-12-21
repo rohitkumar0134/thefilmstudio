@@ -2,28 +2,30 @@
 
 import React from 'react'
 import Footer from '../components/Footer'
-import Navbar from '../components/common/Navbar'
+import Navbar from '../components/common/Navbar1'
 import Ourclient from '../components/home/Ourclient'
 import { Experience } from '../components/home/Experience'
 import Service from '../components/Service'
+import Getintouch from '../components/common/Getintouch'
+import Header from '../components/common/header'
 
 function page() {
     return (
         <>
             <div className="
-relative  bg-center bg-cover  h-screen min-h-144 
+relative  bg-center bg-cover  h-80 min-h-144 
 bg-[url('https://i.imgur.com/B7TiuIX.png')] 
 ">
 
 
                 <div className='z-20 relative px-6 sm:px-8 mx-auto h-full flex flex-col text-gray-300'>
-                    <Navbar />
+                    <Header />
 
                 </div>
 
             </div>
 
-<Service/>
+            <Service />
             {/* <div>
                 <section class="">
                     <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
@@ -40,36 +42,7 @@ bg-[url('https://i.imgur.com/B7TiuIX.png')]
                 </section>
             </div> */}
             <Experience />
-            <div
-                className="contact-section text-center py-16 overflow-hidden m-2"
-            >
-                <div className="container-wide w-container">
-                    <h2
-                        style={{ fontFamily: "Gotham,sans-serif" }}
-                        className="contact-heading tracking-[.15em] mb-3 font-semibold text-3xl lg:text-5xl text-white uppercase mt-0 "
-                        data-aos="fade-up"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out" 
-
-                    >
-                        Ready to create together?
-                    </h2>
-                    <div
-                        className="contact-text mb-8 text-base lg:text-xl text-center text-gray-400"
-                        data-aos="fade-up"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out" 
-
-                    >
-                        Get in touch, and one of our team members will be happy to assist you
-                    </div>
-                    <div 
-      data-aos="fade-up"  data-aos-delay="1000" data-aos-duration="1500" data-aos-easing="ease-in-out" 
-                    
-                    className="button-wrap">
-                        <a href="/contact-us" className="button w-button border-2 border-white">
-                            get in touch
-                        </a>
-                    </div>
-                </div>
-            </div>
-           
+            <Getintouch />
             {/* <Ourclient /> */}
             <Footer />
         </>

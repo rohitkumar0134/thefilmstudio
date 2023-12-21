@@ -9,18 +9,7 @@ import axios from 'axios';
 import { useInView } from 'react-intersection-observer';
 import Aos from 'aos';
 
-const AnimatedComponent = ({ children }) => {
-    const [ref, inView] = useInView({
-      triggerOnce: false,
-      rootMargin: '-50px 0px', // adjust the root margin as needed
-    });
-  
-    return (
-      <div ref={ref} className={`fade-in-sectionX ${inView ? 'is-visible' : ''}`}>
-        {children}
-      </div>
-    );
-  };
+
 
 function Intro() {
     const [loading, setLoading] = useState(false)
@@ -116,7 +105,9 @@ function Intro() {
 
                                 </Swiper>}
                                 </div>
-                                <div data-aos="fade-left"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out" >
+                                <div 
+                                data-aos="fade-left"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
+                                 >
                                 {galleryData && <Swiper
                                     spaceBetween={10}
                                     slidesPerView={3}
@@ -182,9 +173,11 @@ function Intro() {
                             </div>
                             <div className="home-intro-text-bottom">
                                 <p className="home-cta_text ">Let us help you<br />Cut through the noise</p>
-                                <div className="button-wrap">
-                                    <a aria-label="Learn more about us" href="/about" className="button w-button border-2 border-white">
-                                        Learn More
+                                <div className="button-wrap hover:line-through">
+                                    <a aria-label="Learn more about us" 
+                                    href="/about" 
+                                    className="button w-button border-2 border-white hover:line-through">
+                                        {"  Learn More  "}
                                     </a>
                                 </div>
                             </div>

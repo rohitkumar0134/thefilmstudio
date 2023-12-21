@@ -81,7 +81,7 @@ const ServiceCard = ({ cardData }) => {
 
   return (
     <div
-    data-aos="fade-left"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
+    data-aos="fade-right"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
 
       className="flex flex-col cursor-pointer bg-white justify-center py-6 px-10 text-center items-center mt-12 rounded-tl-[35px] rounded-br-[35px] shadow-2xl md:min-h-[340px] w-full card-item-div max-w-screen-md min-h-[260px]"
       style={divStyle}

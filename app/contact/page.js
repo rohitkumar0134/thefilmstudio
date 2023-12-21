@@ -1,9 +1,10 @@
 
 "use client"
 import React from 'react'
-import Navbar from '../components/common/Navbar'
+import Navbar from '../components/common/Navbar1'
 import Footer from '../components/Footer'
 import Ourclient from '../components/home/Ourclient'
+import Header from '../components/common/header'
 
 function page() {
   return (
@@ -14,7 +15,7 @@ bg-[url('https://i.imgur.com/B7TiuIX.png')]
 ">
         <div 
         className='z-20 relative px-6 sm:px-8 mx-auto h-full flex flex-col text-gray-300'>
-          <Navbar />
+          <Header/>
           <div className='flex items-center justify-center h-screen'>
               <h1 className='textdecorclass text-3xl text-center sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-300 leading-snug -mt-24 sm:mt-0'>
               Contact-Us

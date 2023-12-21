@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Facebook, Instagram, Twitter, YouTube } from '@mui/icons-material'
-import { FloatingWhatsApp } from 'react-floating-whatsapp'
+import Aos from 'aos';
 
 function Footer() {
+    useEffect(() => {
+        Aos.init();
+    }, [])
     return (
         <>
-            
-            <footer className="relative pt-8 pb-6">
+
+            <footer
+                data-aos="fade-right" data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
+                className="relative pt-8 pb-6">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap text-left lg:text-left">
                         <div className="w-full lg:w-6/12 px-4">
@@ -23,12 +28,12 @@ function Footer() {
                                 <button className="bg-gray-100 text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" >
                                     <Facebook />
                                 </button>
-                                <button 
-                                onClick={() => {
-                                    window.location.href = 'https://www.instagram.com/thefilmhouse_official/'
-                                }}
-                                className="bg-gray-100 text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
-                                
+                                <button
+                                    onClick={() => {
+                                        window.location.href = 'https://www.instagram.com/thefilmhouse_official/'
+                                    }}
+                                    className="bg-gray-100 text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+
                                     <Instagram />                                    </button>
                                 <button
                                     className="bg-gray-100 text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
@@ -44,12 +49,12 @@ function Footer() {
                         <div className="w-full lg:w-6/12 px-4">
                             <div className="flex flex-wrap items-top mb-6">
                                 <div className="w-full lg:w-4/12 px-4 ml-auto">
-                                  
+
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4">
                                     <span className="block uppercase text-blueGray-500 text-mb font-semibold mb-2 text-gray-200">Company</span>
                                     <ul className="list-unstyled">
-                                       
+
                                         <li>
                                             <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm text-gray-200"
                                                 href="/termandcondition">
@@ -59,7 +64,7 @@ function Footer() {
                                         <li>
                                             <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm text-gray-200"
                                                 href="/About-us">
-                                               About Us
+                                                About Us
                                             </a>
                                         </li>
                                         <li>

@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import Navbar from './components/common/Navbar'
+import Navbar from './components/common/Navbar1'
 import Service from './components/Service'
 import Footer from './components/Footer'
 import Portfolio from './components/home/Portfolio'
@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import Intro from './components/home/Intro'
 import Aos from 'aos'
+import Header from './components/common/Header'
 
 const AnimatedComponent = ({ children }) => {
   const [ref, inView] = useInView({
@@ -41,7 +42,8 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
 
 
           <div className='z-20 relative px-6 sm:px-8 mx-auto h-full flex flex-col text-gray-300'>
-            <Navbar />
+           
+            <Header />
             <div className='flex items-center justify-center h-screen'>
               <h1 className='textdecorclass text-3xl text-center sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-300 leading-snug -mt-24 sm:mt-0'>
                 Welcome to The Film House
@@ -61,7 +63,7 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
 
 
       <div
-      data-aos="fade-up"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out" 
+        data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
       >
         <Portfolio />
 
@@ -69,27 +71,27 @@ bg-[url('https://i.imgur.com/QP0ElDy.png')]
       </div>
 
       <div
-      data-aos="fade-up"  data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out" 
+        data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-easing="ease-in-out"
       >
-           <Experience />
+        <Experience />
       </div>
       {/* <Experience /> */}
       {/* <TeamMemberCard/>
 <FeaturesGrid/> */}
 
-<div
-      data-aos="fade-up"  data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out" 
+      <div
+        data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out"
       >
-          <Ourclient />
+        <Ourclient />
       </div>
-  
+
 
       <div
-      data-aos="fade-up"  data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out" 
+        data-aos="fade-up" data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out"
       >
-          <Footer />
+        <Footer />
       </div>
-   
+
 
       <FloatingWhatsApp
         phoneNumber="+918976487428"
