@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect } from 'react'
-import CheckAuth from './components/CheckAuth'
-import Navbar from './components/Navbar'
-import Gallery from './components/Gallery'
+import CheckAuth from './components/common/CheckAuth'
+import Navbar from './components/common/Navbar'
+import Gallery from './components/gallery/Gallery'
 
 
 function page() {
@@ -10,11 +10,15 @@ function page() {
 
   return (
   <>
+  <div className='bg-gray-300'>
   <Navbar/>
   <CheckAuth/>
-<Gallery/>
+
 
 <div className='mb-4'/>
+
+  </div>
+
  
   </>
   )

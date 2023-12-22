@@ -162,7 +162,7 @@ function Intro() {
                                 lg:w-44 lg:h-44 lg:-bottom-1/3 lg:-left-[16%] lg:right-auto"
 
                                 />
-                                <p className="paragraph font-medium">
+                                <p className="paragraph font-medium bg-stone-900">
                                     In the new climate of digital media, being unique and captivating is the only way to stand out.
                                     <br />
                                     <br />

@@ -2,12 +2,11 @@
 
 import React from 'react'
 import Footer from '../components/Footer'
-import Navbar from '../components/common/Navbar1'
 import Ourclient from '../components/home/Ourclient'
 import { Experience } from '../components/home/Experience'
 import Service from '../components/Service'
 import Getintouch from '../components/common/Getintouch'
-import Header from '../components/common/header'
+import Header from '../components/common/Header'
 
 function page() {
     return (
@@ -42,7 +41,7 @@ bg-[url('https://i.imgur.com/B7TiuIX.png')]
                 </section>
             </div> */}
             <Experience />
-            <Getintouch />
+            <Getintouch showtouch={true}/>
             {/* <Ourclient /> */}
             <Footer />
         </>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import logo from "../../assets/logo.png"
 
 const Header = () => {
     const router = useRouter()
@@ -28,9 +29,9 @@ const Header = () => {
                                         <div
                                             className='h-12 w-16 rounded-full   p-0.5 shadow-lg    backdrop-blur  '>
                                             <a className='pointer-events-auto' href='/'>
-                                                <img
+                                                <Image
                                                     className='rounded-full object-cover  h-12 w-16'
-                                                    src={"https://i.imgur.com/rQTP3wi.png"}
+                                                    src={logo}
                                                 />
                                             </a>
                                         </div>

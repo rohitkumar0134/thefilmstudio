@@ -34,7 +34,8 @@ function Footer() {
                                     }}
                                     className="bg-gray-100 text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
 
-                                    <Instagram />                                    </button>
+                                    <Instagram />
+                                </button>
                                 <button
                                     className="bg-gray-100 text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                                     type="button"

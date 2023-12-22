@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Loginform from '../components/Loginform'
+import Loginform from '../components/login/Loginform'
 
 
 function page() {

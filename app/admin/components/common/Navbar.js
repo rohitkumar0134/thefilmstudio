@@ -1,11 +1,18 @@
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 
 const Navbar = () => {
+    const pathname = usePathname();
     const [isMenuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
     };
+
+    const inactivelink = "text-sm text-gray-400 hover:text-gray-500"
+    const activelink = "text-sm text-blue-600 font-bold"
+
 
     return (
         <>
@@ -33,10 +40,11 @@ const Navbar = () => {
                         </li>
                         <li>
 
-                            <a class="text-sm text-gray-400 hover:text-gray-500"
-                                href="#">
+                            <Link
+                                className={pathname === "/admin/gallery" ? activelink : inactivelink}
+                                href="/admin/gallery">
                                 Gallery
-                            </a>
+                            </Link>
                         </li>
                         <li class="text-gray-300">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
@@ -44,20 +52,26 @@ const Navbar = () => {
                             </svg>
                         </li>
                         <li>
-                            <a class="text-sm text-blue-600 font-bold" href="#">
+                            <Link
+                                className={pathname === "/admin/category" ? activelink : inactivelink}
+
+                                href="/admin/category">
                                 Category
-                            </a>
+                            </Link>
                         </li>
                         <li class="text-gray-300">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                             </svg>
                         </li>
-                       
+
                         <li>
-                            <a class="text-sm  " href="#">
+                            <Link
+                                className={pathname === "/admin/beforeAfter" ? activelink : inactivelink}
+
+                                href="/admin/beforeAfter">
                                 Before-After
-                            </a>
+                            </Link>
                         </li>
                         <li class="text-gray-300">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
@@ -80,9 +94,9 @@ const Navbar = () => {
             {/* Mobile menu */}
             <div className={`navbar-menu ${isMenuOpen ? '' : 'hidden'}`}>
                 <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25" onClick={toggleMenu}></div>
-                <nav 
-                 style={{ zIndex: 10000 }}
-                className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+                <nav
+                    style={{ zIndex: 10000 }}
+                    className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
                     {/* ... (rest of the code remains the same) */}
                     <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
                         <div class="flex items-center mb-8">

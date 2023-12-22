@@ -1,0 +1,113 @@
+img{
+    max-height: 100%;
+}
+
+input, textarea, select{
+    @apply border border-gray-200 rounded-sm py-2 px-3;
+    @apply mb-4;
+}
+input:focus, textarea:focus, select:focus{
+    @apply border-cyan-900;
+}
+h1{
+    @apply text-gray-800 mb-4 text-xl;
+}
+label{
+    @apply text-gray-600;
+}
+
+
+table.basic{
+    @apply w-full bg-white rounded-sm shadow-md;
+}
+
+table.basic thead tr td,
+table.basic thead tr th
+{
+    @apply text-sm text-gray-600 uppercase border-b border-gray-200 px-3 py-2 text-center;
+}
+table.basic tr td, table.basic tr th{
+    @apply px-3 py-1 border ;
+} 
+
+/* td {
+    @apply p-1
+} */
+
+table.basic a{
+    @apply px-4 rounded-sm inline-flex mx-1 items-center gap-1 text-sm py-1;
+}
+.btn-default, .btn-red{
+    @apply px-4 py-1 rounded-md;
+}
+.btn-red{
+    @apply bg-red-200 text-red-600 px-4 py-1 rounded-sm shadow-sm;
+}
+.btn-default{
+    @apply bg-white text-gray-800 px-4 py-1 m-1 rounded-sm border border-gray-200 shadow-sm;
+}
+
+.cyan-placeholder::placeholder {
+    color: #155e75;
+  }
+
+  .number-input::-webkit-inner-spin-button,
+  .number-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  }
+
+  .before-after-slider {
+    width: 100%;
+    position: relative;
+    height: 40vw; /* Remove single quotes around the value */
+    max-height: 20em; /* Use hyphen instead of camel case */
+    max-width: 30em; /* Use hyphen instead of camel case */
+    object-fit: cover;
+    cursor: pointer;
+}
+
+  .before-after-slider__first-photo-container, .before-after-slider__second-photo-container {
+    width: 100%;
+    overflow: hidden;
+    height: 40vw; /* Remove single quotes around the value */
+    max-height: 20em; /* Use hyphen instead of camel case */
+    max-width: 30em; /* Use hyphen instead of camel case */
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .before-after-slider__second-photo-container {
+    top: 0;
+    position: absolute;
+    height: 40vw; /* Remove single quotes around the value */
+    max-height: 20em; /* Use hyphen instead of camel case */
+    max-width: 30em; /* Use hyphen instead of camel case */
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .before-after-slider img {
+    max-width: none;
+    width: 100%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .before-after-slider__delimiter {
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .before-after-slider__delimiter-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .before-after-slider__delimiter-img {
+    cursor: pointer;
+    user-select: none;
+  }
+  

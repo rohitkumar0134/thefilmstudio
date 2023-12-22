@@ -1,6 +1,5 @@
 "use client"
 import Image from 'next/image'
-import Navbar from './components/common/Navbar1'
 import Service from './components/Service'
 import Footer from './components/Footer'
 import Portfolio from './components/home/Portfolio'

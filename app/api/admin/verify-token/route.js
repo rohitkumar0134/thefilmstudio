@@ -33,22 +33,4 @@ let valid
 
 
 
-async function check_authentication (req, res){
-    const token = req.body.token;
-    if (!token) {
-        res.status(400).send({ message: 'provide token ' });
-        return;
-      }
-  
-    jwt.verify(token,JWT_SECRET, (err, decoded) => {
-      if (err) {
-        res.json({
-          valid: false
-        });
-      } else {
-        res.json({
-          valid: true
-        });
-      }
-    });
-  }
+

@@ -11,14 +11,28 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
     const [type, setType] = useState("image")
     const [status, setStatus] = useState(1);
 
-    const handleThumbnailChange = (e) => {
+    const handleThumbnailChange =async (e) => {
         const file = e.target.files[0];
-        setThumbnail(file);
+        if (file) {
+            const data = new FormData();
+          data.append('file', file);
+          const res = await axios.post('/api/admin/upload', data);
+          // console.log(URL.createObjectURL(file))
+          setThumbnail(res.data.fileName); 
+            }
+     
     };
 
-    const handleImageChange = (e) => {
+    const handleImageChange = async(e) => {
         const file = e.target.files[0];
-        setImage(file);
+        if (file) {
+            const data = new FormData();
+          data.append('file', file);
+          const res = await axios.post('/api/admin/upload', data);
+          // console.log(URL.createObjectURL(file))
+          setImage(res.data.fileName); 
+            }
+      
     };
 
     const handleDelete = (id) => {

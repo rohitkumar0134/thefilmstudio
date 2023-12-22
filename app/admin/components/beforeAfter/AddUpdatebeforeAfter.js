@@ -1,0 +1,260 @@
+import { Dialog, DialogTitle } from '@mui/material';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import Resizer from "react-image-file-resizer";
+
+function AddUpdatebeforeAfter({ data, close_modal, openmodal }) {
+    const [beforeImage, setBeforeImage] = useState(null)
+    const [AfterImage, setAfterImage] = useState(null)
+    const [status, setStatus] = useState(1);
+   
+    
+
+
+
+    useEffect(() => {
+        if (data) {
+            setAfterImage(data?.AfterImage)
+            setBeforeImage(data?.beforeImage)
+            setStatus(data?.status)
+        }
+
+    }, [])
+
+    const handleAdd = async () => {
+        // Add your add logic here
+        console.log("Add button clicked");
+        const postdata = {
+            beforeImage: beforeImage,
+            AfterImage: AfterImage,
+            status: status,
+
+        }
+        console.log(postdata)
+        const { data } = await axios.post("/api/admin/beforeAfter", postdata)
+        console.log(data)
+
+    };
+
+    const handleUpdate = async (_id) => {
+        // Add your add logic here
+        console.log("Add button clicked");
+        const postdata = {
+            beforeImage: beforeImage,
+            AfterImage: AfterImage,
+            status: status,
+            _id: _id
+        }
+        console.log(postdata)
+        const { data } = await axios.put("/api/admin/beforeAfter", postdata)
+
+    };
+
+    const _close_drawer = () => {
+        setBeforeImage("")
+        setAfterImage("")
+        close_modal()
+    }
+    const handleBeforeChange = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const imgname = e.target.files[0].name;
+            const reader = new FileReader();
+        
+            const tempImagePromise = new Promise((resolve) => {
+              reader.onloadend = () => {
+                const img = new Image();
+                img.src = reader.result;
+                img.onload = () => {
+                  const canvas = document.createElement("canvas");
+                  const maxSize = Math.max(img.width, img.height);
+                  canvas.width = maxSize;
+                  canvas.height = maxSize;
+                  const ctx = canvas.getContext("2d");
+                  ctx.drawImage(
+                    img,
+                    (maxSize - img.width) / 2,
+                    (maxSize - img.height) / 2
+                  );
+                  canvas.toBlob(
+                    (blob) => {
+                      const file = new File([blob], imgname, {
+                        type: "image/png",
+                        lastModified: Date.now(),
+                      });
+        
+                      console.log(file);
+                      resolve(file);
+                    },
+                    "image/jpeg",
+                    0.8
+                  );
+                };
+              };
+        
+              reader.readAsDataURL(file);
+            });
+        
+            const TempImage = await tempImagePromise;
+        
+          
+        
+            // console.log(image)
+            const data = new FormData();
+            data.append('file', TempImage);
+            const res = await axios.post('/api/admin/upload', data);
+            console.log(res)
+            setBeforeImage(res.data.fileName);
+        }
+
+    };
+
+    const handleAfterChange = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const imgname = e.target.files[0].name;
+            const reader = new FileReader();
+        
+            const tempImagePromise = new Promise((resolve) => {
+              reader.onloadend = () => {
+                const img = new Image();
+                img.src = reader.result;
+                img.onload = () => {
+                  const canvas = document.createElement("canvas");
+                  const maxSize = Math.max(img.width, img.height);
+                  canvas.width = maxSize;
+                  canvas.height = maxSize;
+                  const ctx = canvas.getContext("2d");
+                  ctx.drawImage(
+                    img,
+                    (maxSize - img.width) / 2,
+                    (maxSize - img.height) / 2
+                  );
+                  canvas.toBlob(
+                    (blob) => {
+                      const file = new File([blob], imgname, {
+                        type: "image/png",
+                        lastModified: Date.now(),
+                      });
+        
+                      console.log(file);
+                      resolve(file);
+                    },
+                    "image/jpeg",
+                    0.8
+                  );
+                };
+              };
+        
+              reader.readAsDataURL(file);
+            });
+        
+            const TempImage = await tempImagePromise;
+        
+          
+        
+            // console.log(image)
+            const data = new FormData();
+            data.append('file', TempImage);
+            const res = await axios.post('/api/admin/upload', data);
+            console.log(res)
+            setAfterImage(res.data.fileName);
+        }
+
+    };
+
+    const resizeFile = (file) =>
+        new Promise((resolve) => {
+            Resizer.imageFileResizer(
+                file,
+                300,
+                300,
+                "JPEG",
+                100,
+                0,
+                (uri) => {
+                    console.log(uri);
+                    resolve(uri);
+                },
+
+            );
+        });
+
+    return (
+        <>
+            <Dialog onClose={_close_drawer} open={openmodal}>
+                <DialogTitle>
+                    {data ? "Update image" : "Add Image"}
+                </DialogTitle>
+                <div className='grid grid-cols-4 gap-4' style={{ borderRadius: '5px' }}>
+
+
+                    <div className="col-span-4 p-2">
+                        <label htmlFor="thumbnail" className="block text-sm font-medium text-gray-700">
+                            Before Image
+                        </label>
+                        <input
+                            type="file"
+                            id="thumbnail"
+                            className="bg-slate-200 p-4 m-2 rounded"
+                            onChange={handleBeforeChange}
+                        />
+                    </div>
+
+                    <div className="col-span-4 p-2">
+                        <label htmlFor="thumbnail" className="block text-sm font-medium text-gray-700">
+                            After Image
+                        </label>
+                        <input
+                            type="file"
+                            id="thumbnail"
+                            className="bg-slate-200 p-4 m-2 rounded"
+                            onChange={handleAfterChange}
+                        />
+                    </div>
+
+                    <div className="col-span-4 p-2">
+                        <label htmlFor="categoryName" className="block text-sm font-medium text-gray-700">
+                            Show to Customer
+                        </label>
+                        <select
+
+                            className="bg-slate-200 p-4 m-2 rounded"
+                            value={status}
+                            onChange={(e) => setStatus(e.target.value)}
+                        >
+                            <option value={1} >Yes</option>
+                            <option value={0} >No</option>
+
+
+                        </select>
+                    </div>
+
+
+
+
+
+                    <div className='col-span-2'>
+                        <button className="mx-4 bg-red-500 p-2 px-8 rounded"
+                            onClick={() => _close_drawer()}>
+                            Cancel
+                        </button>
+                    </div>
+                    <div className='col-span-2'>
+                        {data ?
+                            <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={() => handleUpdate(data._id)}>
+                                Update
+                            </button>
+                            : <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={handleAdd}>
+                                Add
+                            </button>}
+                    </div>
+                </div>
+                <div className='mb-2' />
+            </Dialog>
+
+        </>
+    )
+}
+
+export default AddUpdatebeforeAfter

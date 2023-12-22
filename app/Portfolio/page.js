@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 
-import Navbar from '../components/common/Navbar1'
 import Footer from '../components/Footer'
 import SimpleImageGallery from '../components/portfolio/SimpleImageGallery'
 import BeforeAfter from '../components/common/BeforeAfter'
