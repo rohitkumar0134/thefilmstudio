@@ -10,7 +10,7 @@ import Portfoliointro from '../components/portfolio/Portfoliointro'
 import Getintouch from '../components/common/Getintouch'
 import Header from '../components/common/Header'
 
-function Portfolio() {
+function page() {
   const router = useRouter()
   return (
     <>
@@ -37,4 +37,4 @@ bg-[url('https://i.imgur.com/B7TiuIX.png')]
   )
 }
 
-export default Portfolio
+export default page
