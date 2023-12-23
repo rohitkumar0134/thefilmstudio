@@ -3,34 +3,28 @@ import jwt from 'jsonwebtoken'
 
 const JWT_SECRET = process.env.JWT_SECRET
 
+export default function verifyToken(token) {
+    return new Promise((resolve, reject) => {
+        jwt.verify(token, JWT_SECRET, (err, decoded) => {
+            if (err) {
+                resolve(false);
+            } else {
+                resolve(true);
+            }
+        });
+    });
+}
+
 export async function POST(request) {
     const body = await request.json();
 
-
     const { token } = body;
-    console.log(token)
+
     if (!token) {
-      return NextResponse.json({ message: 'provide token ' }, { status: 400 })
+        return NextResponse.json({ message: 'Provide token' }, { status: 400 });
     }
-let valid
-    jwt.verify(token,JWT_SECRET, (err, decoded) => {
-        if (err) {
-            valid=false
-            // return NextResponse.json({ valid: false }, { status: 200 })
-          
-        } else {
-            valid=true
-            // return NextResponse.json({ valid: true }, { status: 200 })
-          
-        }
-      });
 
-      return NextResponse.json({ valid: valid }, { status: 200 })
+    const valid = await verifyToken(token);
 
+    return NextResponse.json({ valid: valid }, { status: 200 });
 }
-
-
-
-
-
-

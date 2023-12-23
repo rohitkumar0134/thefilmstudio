@@ -2,11 +2,16 @@ import { Dialog, DialogTitle } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Resizer from "react-image-file-resizer";
+import { useSnackbar } from "notistack";
+import Loading from '../common/Loading';
+
 
 function AddUpdatebeforeAfter({ data, close_modal, openmodal }) {
+    const { enqueueSnackbar } = useSnackbar();
     const [beforeImage, setBeforeImage] = useState(null)
     const [AfterImage, setAfterImage] = useState(null)
     const [status, setStatus] = useState(1);
+    const [isLoading,setIsLoading]=useState(false)
    
     
 
@@ -22,166 +27,208 @@ function AddUpdatebeforeAfter({ data, close_modal, openmodal }) {
     }, [])
 
     const handleAdd = async () => {
-        // Add your add logic here
-        console.log("Add button clicked");
-        const postdata = {
-            beforeImage: beforeImage,
-            AfterImage: AfterImage,
-            status: status,
-
+        try {
+            // Add your add logic here
+            console.log("Add button clicked");
+            const postdata = {
+                beforeImage: beforeImage,
+                AfterImage: AfterImage,
+                status: status,
+            };
+    
+            console.log(postdata);
+    
+            const { data } = await axios.post("/api/admin/beforeAfter", postdata);
+            console.log(data);
+    
+            // You can check the response data and handle success or error accordingly
+            if (data.success) {
+                enqueueSnackbar("Image uploaded", { variant: 'success' });
+                _close_drawer()
+            } else {
+                enqueueSnackbar("Error Message", { variant: 'error' });
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            enqueueSnackbar("An error occurred", { variant: 'error' });
         }
-        console.log(postdata)
-        const { data } = await axios.post("/api/admin/beforeAfter", postdata)
-        console.log(data)
-
     };
+    
 
     const handleUpdate = async (_id) => {
-        // Add your add logic here
-        console.log("Add button clicked");
-        const postdata = {
-            beforeImage: beforeImage,
-            AfterImage: AfterImage,
-            status: status,
-            _id: _id
+        try {
+            // Add your update logic here
+            console.log("Update button clicked");
+            const postdata = {
+                beforeImage: beforeImage,
+                AfterImage: AfterImage,
+                status: status,
+                _id: _id
+            };
+    
+            console.log(postdata);
+    
+            const { data } = await axios.put("/api/admin/beforeAfter", postdata);
+            console.log(data);
+    
+            // You can check the response data and handle success or error accordingly
+            if (data.success) {
+                enqueueSnackbar("Update successful", { variant: 'success' });
+                _close_drawer()
+            } else {
+                enqueueSnackbar("Update failed", { variant: 'error' });
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            enqueueSnackbar("An error occurred during the update", { variant: 'error' });
         }
-        console.log(postdata)
-        const { data } = await axios.put("/api/admin/beforeAfter", postdata)
-
     };
+    
 
     const _close_drawer = () => {
         setBeforeImage("")
         setAfterImage("")
         close_modal()
     }
+    
     const handleBeforeChange = async (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const imgname = e.target.files[0].name;
-            const reader = new FileReader();
-        
-            const tempImagePromise = new Promise((resolve) => {
-              reader.onloadend = () => {
-                const img = new Image();
-                img.src = reader.result;
-                img.onload = () => {
-                  const canvas = document.createElement("canvas");
-                  const maxSize = Math.max(img.width, img.height);
-                  canvas.width = maxSize;
-                  canvas.height = maxSize;
-                  const ctx = canvas.getContext("2d");
-                  ctx.drawImage(
-                    img,
-                    (maxSize - img.width) / 2,
-                    (maxSize - img.height) / 2
-                  );
-                  canvas.toBlob(
-                    (blob) => {
-                      const file = new File([blob], imgname, {
-                        type: "image/png",
-                        lastModified: Date.now(),
-                      });
-        
-                      console.log(file);
-                      resolve(file);
-                    },
-                    "image/jpeg",
-                    0.8
-                  );
-                };
-              };
-        
-              reader.readAsDataURL(file);
-            });
-        
-            const TempImage = await tempImagePromise;
-        
-          
-        
-            // console.log(image)
-            const data = new FormData();
-            data.append('file', TempImage);
-            const res = await axios.post('/api/admin/upload', data);
-            console.log(res)
-            setBeforeImage(res.data.fileName);
-        }
+        setIsLoading(true)
+        try {
+            const file = e.target.files[0];
+    
+            if (file) {
+                const imgname = e.target.files[0].name;
+                const reader = new FileReader();
+    
+                const tempImagePromise = new Promise((resolve) => {
+                    reader.onloadend = () => {
+                        const img = new Image();
+                        img.src = reader.result;
+                        img.onload = () => {
+                            const canvas = document.createElement("canvas");
+                            const maxSize = Math.max(img.width, img.height);
+                            canvas.width = maxSize;
+                            canvas.height = maxSize;
+                            const ctx = canvas.getContext("2d");
+                            ctx.drawImage(
+                                img,
+                                (maxSize - img.width) / 2,
+                                (maxSize - img.height) / 2
+                            );
+                            canvas.toBlob(
+                                (blob) => {
+                                    const file = new File([blob], imgname, {
+                                        type: "image/png",
+                                        lastModified: Date.now(),
+                                    });
+    
+                                    console.log(file);
+                                    resolve(file);
+                                },
+                                "image/jpeg",
+                                0.8
+                            );
+                        };
+                    };
+    
+                    reader.readAsDataURL(file);
+                });
+    
+                const TempImage = await tempImagePromise;
+    
+                const data = new FormData();
+                data.append('file', TempImage);
+    
+                const res = await axios.post('/api/admin/upload', data);
+                console.log(res);
+    
+                if (res?.data?.success) {
+                    setBeforeImage(res.data.fileName);
+                    setIsLoading(false)
+                }
+            }
+        } catch (error) {
+            setIsLoading(false)
+            console.error("Error:", error);
+            enqueueSnackbar(error, { variant: 'error' });
 
+            // Handle the error, display a message, or take appropriate action
+        }
     };
+    
 
     const handleAfterChange = async (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const imgname = e.target.files[0].name;
-            const reader = new FileReader();
-        
-            const tempImagePromise = new Promise((resolve) => {
-              reader.onloadend = () => {
-                const img = new Image();
-                img.src = reader.result;
-                img.onload = () => {
-                  const canvas = document.createElement("canvas");
-                  const maxSize = Math.max(img.width, img.height);
-                  canvas.width = maxSize;
-                  canvas.height = maxSize;
-                  const ctx = canvas.getContext("2d");
-                  ctx.drawImage(
-                    img,
-                    (maxSize - img.width) / 2,
-                    (maxSize - img.height) / 2
-                  );
-                  canvas.toBlob(
-                    (blob) => {
-                      const file = new File([blob], imgname, {
-                        type: "image/png",
-                        lastModified: Date.now(),
-                      });
-        
-                      console.log(file);
-                      resolve(file);
-                    },
-                    "image/jpeg",
-                    0.8
-                  );
-                };
-              };
-        
-              reader.readAsDataURL(file);
-            });
-        
-            const TempImage = await tempImagePromise;
-        
-          
-        
-            // console.log(image)
-            const data = new FormData();
-            data.append('file', TempImage);
-            const res = await axios.post('/api/admin/upload', data);
-            console.log(res)
-            setAfterImage(res.data.fileName);
+        setIsLoading(true)
+
+        try {
+            const file = e.target.files[0];
+    
+            if (file) {
+                const imgname = e.target.files[0].name;
+                const reader = new FileReader();
+    
+                const tempImagePromise = new Promise((resolve) => {
+                    reader.onloadend = () => {
+                        const img = new Image();
+                        img.src = reader.result;
+                        img.onload = () => {
+                            const canvas = document.createElement("canvas");
+                            const maxSize = Math.max(img.width, img.height);
+                            canvas.width = maxSize;
+                            canvas.height = maxSize;
+                            const ctx = canvas.getContext("2d");
+                            ctx.drawImage(
+                                img,
+                                (maxSize - img.width) / 2,
+                                (maxSize - img.height) / 2
+                            );
+                            canvas.toBlob(
+                                (blob) => {
+                                    const file = new File([blob], imgname, {
+                                        type: "image/png",
+                                        lastModified: Date.now(),
+                                    });
+    
+                                    console.log(file);
+                                    resolve(file);
+                                },
+                                "image/jpeg",
+                                0.8
+                            );
+                        };
+                    };
+    
+                    reader.readAsDataURL(file);
+                });
+    
+                const TempImage = await tempImagePromise;
+    
+                const data = new FormData();
+                data.append('file', TempImage);
+    
+                const res = await axios.post('/api/admin/upload', data);
+                console.log(res);
+    
+                if (res?.data?.success) {
+                    setAfterImage(res.data.fileName);
+        setIsLoading(false)
+
+                }
+            }
+        } catch (error) {
+        setIsLoading(false)
+        enqueueSnackbar("Error Message", { variant: 'error' });
+            console.error("Error:", error);
+            // Handle the error, display a message, or take appropriate action
         }
-
     };
+    
 
-    const resizeFile = (file) =>
-        new Promise((resolve) => {
-            Resizer.imageFileResizer(
-                file,
-                300,
-                300,
-                "JPEG",
-                100,
-                0,
-                (uri) => {
-                    console.log(uri);
-                    resolve(uri);
-                },
-
-            );
-        });
+  
 
     return (
         <>
+        {isLoading&&<Loading/>}
             <Dialog onClose={_close_drawer} open={openmodal}>
                 <DialogTitle>
                     {data ? "Update image" : "Add Image"}

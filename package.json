@@ -21,6 +21,7 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.3",
     "next": "latest",
+    "notistack": "^3.0.1",
     "react": "latest",
     "react-before-after-slider-component": "^1.1.8",
     "react-countup": "^6.5.0",

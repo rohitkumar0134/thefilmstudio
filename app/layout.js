@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import SplashScreen from './components/SplashScreen'
 import 'aos/dist/aos.css';
+import { SnackbarProvider } from 'notistack'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -41,8 +42,13 @@ export default function RootLayout({ children }) {
    
 </head>
       <body className={`${inter.className} bg-stone-900 font-serif`}>
+      <SnackbarProvider autoHideDuration={2000} 
+       anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'center',
+      }}>
       {giveChildrenAccToRoute()}
-
+      </SnackbarProvider>
       </body>
     </html>
   )

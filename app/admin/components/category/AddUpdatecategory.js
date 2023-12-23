@@ -1,8 +1,11 @@
 import { Dialog, DialogTitle } from '@mui/material';
 import axios from 'axios';
+import { useSnackbar } from 'notistack';
 import React, { useEffect, useState } from 'react'
 
 function AddUpdatecategory({ data, close_modal, openmodal }) {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [categoryName, setCategoryName] = useState("")
 
   useEffect(() => {
@@ -12,27 +15,55 @@ function AddUpdatecategory({ data, close_modal, openmodal }) {
 
   }, [])
 
-  const handleAdd = async () => {
-    // Add your add logic here
-    console.log("Add button clicked");
+const handleAdd = async () => {
+    try {
+        // Add your add logic here
+        console.log("Add button clicked");
 
-    console.log(categoryName)
-    const { data } = await axios.put("/api/admin/gallery", { category: categoryName })
-    console.log(data)
-  };
+        console.log(categoryName);
+        
+        const { data } = await axios.post("/api/admin/category", { category: categoryName });
+        console.log(data);
 
-  const handleUpdate = async (_id) => {
-    // Add your add logic here
-    console.log(categoryName)
-    const { data } = await axios.put("/api/admin/category",
-      {
-        _id:_id,
-        category: categoryName
+        // You can customize the success message based on your response data
+        if (data.success) {
+            enqueueSnackbar("Category added successfully", { variant: 'success' });
+          _close_drawer()
+
+        } else {
+            // Customize the error message based on your response data
+            enqueueSnackbar("Failed to add category", { variant: 'error' });
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        enqueueSnackbar("An error occurred while adding category", { variant: 'error' });
+    }
+};
+
+
+const handleUpdate = async (_id) => {
+  try {
+      // Add your add logic here
+      console.log("Add button clicked");
+
+      console.log(categoryName);
+      
+      const { data } = await axios.put("/api/admin/category", { category: categoryName });
+      console.log(data);
+
+      // You can customize the success message based on your response data
+      if (data.success) {
+          enqueueSnackbar("Category added successfully", { variant: 'success' });
+          _close_drawer()
+      } else {
+          // Customize the error message based on your response data
+          enqueueSnackbar("Failed to add category", { variant: 'error' });
       }
-    )
-   
-
-  };
+  } catch (error) {
+      console.error("Error:", error);
+      enqueueSnackbar("An error occurred while adding category", { variant: 'error' });
+  }
+};
 
   const _close_drawer=()=>{
     setCategoryName("")

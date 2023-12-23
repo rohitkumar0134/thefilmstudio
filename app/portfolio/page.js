@@ -4,8 +4,6 @@ import React from 'react'
 
 import Footer from '../components/Footer'
 import SimpleImageGallery from '../components/portfolio/SimpleImageGallery'
-import BeforeAfter from '../components/common/BeforeAfter'
-import { ArrowForward } from '@mui/icons-material'
 import { useRouter } from 'next/navigation'
 import Portfoliointro from '../components/portfolio/Portfoliointro'
 import Getintouch from '../components/common/Getintouch'

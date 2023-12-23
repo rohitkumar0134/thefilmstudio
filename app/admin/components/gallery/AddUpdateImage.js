@@ -1,6 +1,7 @@
 import { Dialog, DialogTitle } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Loading from '../common/Loading';
 
 function AddUpdateImage({ data, close_drawer, openmodal }) {
     const [category, setCategory] = useState()
@@ -10,6 +11,8 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
     const [video, setVideo] = useState("");
     const [type, setType] = useState("image")
     const [status, setStatus] = useState(1);
+    const [isLoading,setIsLoading]=useState(false)
+
 
     const handleThumbnailChange =async (e) => {
         const file = e.target.files[0];
@@ -23,54 +26,141 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
      
     };
 
-    const handleImageChange = async(e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const data = new FormData();
-          data.append('file', file);
-          const res = await axios.post('/api/admin/upload', data);
-          // console.log(URL.createObjectURL(file))
-          setImage(res.data.fileName); 
+
+
+    const handleImageChange = async (e) => {
+        setIsLoading(true)
+        try {
+            const file = e.target.files[0];
+    
+            if (file) {
+                const imgname = e.target.files[0].name;
+                const reader = new FileReader();
+    
+                const tempImagePromise = new Promise((resolve) => {
+                    reader.onloadend = () => {
+                        const img = new Image();
+                        img.src = reader.result;
+                        img.onload = () => {
+                            const canvas = document.createElement("canvas");
+                            const maxSize = Math.max(img.width, img.height);
+                            canvas.width = maxSize;
+                            canvas.height = maxSize;
+                            const ctx = canvas.getContext("2d");
+                            ctx.drawImage(
+                                img,
+                                (maxSize - img.width) / 2,
+                                (maxSize - img.height) / 2
+                            );
+                            canvas.toBlob(
+                                (blob) => {
+                                    const file = new File([blob], imgname, {
+                                        type: "image/png",
+                                        lastModified: Date.now(),
+                                    });
+    
+                                    console.log(file);
+                                    resolve(file);
+                                },
+                                "image/jpeg",
+                                0.8
+                            );
+                        };
+                    };
+    
+                    reader.readAsDataURL(file);
+                });
+    
+                const TempImage = await tempImagePromise;
+    
+                const data = new FormData();
+                data.append('file', TempImage);
+    
+                const res = await axios.post('/api/admin/upload', data);
+                console.log(res);
+    
+                if (res?.data?.success) {
+                    setImage(res.data.fileName);
+                    setIsLoading(false)
+                }
             }
-      
+        } catch (error) {
+            setIsLoading(false)
+            console.error("Error:", error);
+            enqueueSnackbar(error, { variant: 'error' });
+
+            // Handle the error, display a message, or take appropriate action
+        }
     };
 
-    const handleDelete = (id) => {
+    const handleDelete = (_id) => {
         // Add your delete logic here
         console.log(`Delete button clicked for ID: ${id}`);
     };
 
-    const handleAdd =async () => {
-        // Add your add logic here
-        console.log("Add button clicked");
-        const postdata = {
-            thumbnailimg: thumbnail,
-            image: type=="image"?image:"",
-            video: type=="image"?"":video,
-            status: status,
-            category: categoryid,
-
+    const handleAdd = async () => {
+        try {
+            // Add your add logic here
+            console.log("Add button clicked");
+            const postdata = {
+                thumbnailimg: thumbnail,
+                image: type === "image" ? image : "",
+                video: type === "image" ? "" : video,
+                status: status,
+                category: categoryid,
+            };
+    
+            console.log(postdata);
+    
+            const { data } = await axios.put("/api/admin/gallery", postdata);
+    
+            // You can customize the success message based on your response data
+            if (data.success) {
+                enqueueSnackbar("Item added successfully", { variant: 'success' });
+                _close_drawer()
+            } else {
+                // Customize the error message based on your response data
+                enqueueSnackbar("Failed to add item", { variant: 'error' });
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            enqueueSnackbar("An error occurred while adding item", { variant: 'error' });
         }
-        console.log(postdata)
-        const {data}=await axios.put("/api/admin/gallery",postdata)
-      
     };
+    
 
-    const handleUpdate =async (_id) => {
-        // Add your add logic here
-        console.log("Add button clicked");
-        const postdata = {
-            thumbnailimg: thumbnail,
-            image: type=="image"?image:"",
-            video: type=="image"?"":video,
-            status: status,
-            category: categoryid,
-            _id:_id
+    const handleUpdate = async (_id) => {
+        try {
+            // Add your update logic here
+            console.log("Update button clicked");
+            const postdata = {
+                thumbnailimg: thumbnail,
+                image: type === "image" ? image : "",
+                video: type === "image" ? "" : video,
+                status: status,
+                category: categoryid,
+                _id: _id
+            };
+    
+            console.log(postdata);
+    
+            const { data } = await axios.put("/api/admin/gallery", postdata);
+    
+            // You can customize the success message based on your response data
+            if (data.success) {
+                enqueueSnackbar("Item updated successfully", { variant: 'success' });
+                _close_drawer()
+
+            } else {
+                // Customize the error message based on your response data
+                enqueueSnackbar("Failed to update item", { variant: 'error' });
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            enqueueSnackbar("An error occurred while updating item", { variant: 'error' });
         }
-        console.log(postdata)
-        const {data}=await axios.put("/api/admin/gallery",postdata)
-      
     };
+    
 
 
 
@@ -106,6 +196,7 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
 
     return (
         <>
+          {isLoading&&<Loading/>}
             <Dialog onClose={_close_drawer} open={openmodal}>
                 <DialogTitle>
                     {data ? "Update image" : "Add Image"}
