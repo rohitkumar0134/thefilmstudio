@@ -30,7 +30,7 @@ bg-[url('https://i.imgur.com/B7TiuIX.png')]
 
         <SimpleImageGallery />
       </div>
-      <Getintouch />
+      <Getintouch showtouch={true} />
       <Footer />
     </>
   )

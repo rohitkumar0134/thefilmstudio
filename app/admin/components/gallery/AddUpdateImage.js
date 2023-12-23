@@ -34,47 +34,13 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
             const file = e.target.files[0];
     
             if (file) {
-                const imgname = e.target.files[0].name;
-                const reader = new FileReader();
+               
+                
     
-                const tempImagePromise = new Promise((resolve) => {
-                    reader.onloadend = () => {
-                        const img = new Image();
-                        img.src = reader.result;
-                        img.onload = () => {
-                            const canvas = document.createElement("canvas");
-                            const maxSize = Math.max(img.width, img.height);
-                            canvas.width = maxSize;
-                            canvas.height = maxSize;
-                            const ctx = canvas.getContext("2d");
-                            ctx.drawImage(
-                                img,
-                                (maxSize - img.width) / 2,
-                                (maxSize - img.height) / 2
-                            );
-                            canvas.toBlob(
-                                (blob) => {
-                                    const file = new File([blob], imgname, {
-                                        type: "image/png",
-                                        lastModified: Date.now(),
-                                    });
-    
-                                    console.log(file);
-                                    resolve(file);
-                                },
-                                "image/jpeg",
-                                0.8
-                            );
-                        };
-                    };
-    
-                    reader.readAsDataURL(file);
-                });
-    
-                const TempImage = await tempImagePromise;
+             
     
                 const data = new FormData();
-                data.append('file', TempImage);
+                data.append('file', file);
     
                 const res = await axios.post('/api/admin/upload', data);
                 console.log(res);

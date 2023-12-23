@@ -54,14 +54,10 @@ export async function POST(request) {
 
         console.log(updatedLog);
 
-        // Check if the document was modified
-        if (updatedLog.nModified > 0) {
+       
             // Document(s) were modified, indicating a successful update
             return NextResponse.json({ success: true, message: "Category updated successfully" }, { status: 201 });
-        } else {
-            // Document was not modified, indicating that the update did not occur
-            return NextResponse.json({ success: false, message: "No changes made. Category may not exist or no modifications were applied." }, { status: 400 });
-        }
+       
     } catch (error) {
         console.error("Error:", error);
         return NextResponse.json({ success: false, message: "An error occurred while updating category" }, { status: 500 });

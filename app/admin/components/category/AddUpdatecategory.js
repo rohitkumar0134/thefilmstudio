@@ -22,7 +22,7 @@ const handleAdd = async () => {
 
         console.log(categoryName);
         
-        const { data } = await axios.post("/api/admin/category", { category: categoryName });
+        const { data } = await axios.post("/api/admin/category", { category: categoryName , token :localStorage.getItem("token")});
         console.log(data);
 
         // You can customize the success message based on your response data
@@ -48,7 +48,13 @@ const handleUpdate = async (_id) => {
 
       console.log(categoryName);
       
-      const { data } = await axios.put("/api/admin/category", { category: categoryName });
+      const { data } = await axios.put("/api/admin/category", 
+      { 
+        _id:_id,
+        category: categoryName ,
+        token :localStorage.getItem("token")
+      }
+      );
       console.log(data);
 
       // You can customize the success message based on your response data

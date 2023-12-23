@@ -3,8 +3,11 @@ import AddUpdatecategory from './AddUpdatecategory'
 import ToggleButton from '../common/ToggleButton'
 import { FaSpinner } from 'react-icons/fa';
 import axios from 'axios';
+import { useSnackbar } from 'notistack';
 
 function Category() {
+  const { enqueueSnackbar } = useSnackbar();
+
     const [openmodal, setOpenmodal] = useState(false)
     const [editdata, setEditdata] = useState("")
     const [isLoading,setIsLoading]=useState(true)
@@ -27,10 +30,16 @@ const handleToggle = async (_id, status) => {
       const updatedCategory = {
         _id: _id,
         status: !status,
+        token:localStorage.getItem("token")
       };
       console.log(updatedCategory)
       const {data}=await axios.post("/api/admin/category/toggle",updatedCategory)
-      fetchcategories()
+      if (data.success) {
+        enqueueSnackbar("Category Toggle successfully", { variant: 'success' });
+        fetchcategories()
+
+
+    }
     } catch (error) {
       
       console.error("An error occurred:", error);
@@ -40,6 +49,7 @@ const handleToggle = async (_id, status) => {
     const close_modal = () => {
         setOpenmodal(false)
         setEditdata("")
+        fetchcategories()
 
     }
 
