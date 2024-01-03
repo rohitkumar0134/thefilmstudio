@@ -28,7 +28,7 @@ maxBodyLength: Infinity,
 const response=await axios(config)
 console.log(JSON.stringify(response.data.data));
 
-    return NextResponse.json({ success: true,fileName:response.data.data.medium?.url});
+    return NextResponse.json({ success: true,fileName:response.data.data?.url});
   }
   
   return NextResponse.json({ success: false, error: "No file uploaded" });

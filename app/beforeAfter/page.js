@@ -1,10 +1,23 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 
 import BeforeAfter from '../components/common/BeforeAfter'
 import Header from '../components/common/Header'
+import axios from 'axios'
 
 function page() {
+  const [data,setData]=useState([])
+
+  useEffect(()=>{
+const fetchdata=async()=>{
+  const {data}=await axios.get("/api/user/beforeAfter")
+  console.log(data)
+  setData(data.beforeAfter)
+}
+fetchdata()
+  },[])
+
   return (
     <>
       <div className="relative  bg-center bg-cover  h-80 min-h-144 bg-[url('https://i.imgur.com/B7TiuIX.png')] 
@@ -22,19 +35,15 @@ function page() {
         </div>
       </div>
       <div className='mt-4 grid md:grid-cols-2 gap-4 items-center'>
-        <BeforeAfter
-          before={"https://i.ibb.co/SB1Yw5b/006-626120c91bc23-88f0-1.jpg"}
-          after={"https://i.ibb.co/4fmct4p/006-626120c91bcd23-880.jpg"}
-        />
-        <BeforeAfter
-          before={"https://i.ibb.co/SB1Yw5b/006-626120c91bc23-88f0-1.jpg"}
-          after={"https://i.ibb.co/4fmct4p/006-626120c91bcd23-880.jpg"}
+        {data?.map((img)=>(
+          <BeforeAfter
+          id={img._id}
+          before={img.beforeImage}
+          after={img.AfterImage}
         />
 
-<BeforeAfter
-          before={"https://i.ibb.co/SB1Yw5b/006-626120c91bc23-88f0-1.jpg"}
-          after={"https://i.ibb.co/4fmct4p/006-626120c91bcd23-880.jpg"}
-        />
+        ))}
+        
       </div>
 
 

@@ -31,6 +31,7 @@ function AddUpdatebeforeAfter({ data, close_modal, openmodal }) {
             // Add your add logic here
             console.log("Add button clicked");
             const postdata = {
+                token :localStorage.getItem("token"),
                 beforeImage: beforeImage,
                 AfterImage: AfterImage,
                 status: status,
@@ -60,6 +61,7 @@ function AddUpdatebeforeAfter({ data, close_modal, openmodal }) {
             // Add your update logic here
             console.log("Update button clicked");
             const postdata = {
+                token :localStorage.getItem("token"),
                 beforeImage: beforeImage,
                 AfterImage: AfterImage,
                 status: status,

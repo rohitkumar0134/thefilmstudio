@@ -2,8 +2,11 @@ import { Dialog, DialogTitle } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loading from '../common/Loading';
+import { useSnackbar } from 'notistack';
 
 function AddUpdateImage({ data, close_drawer, openmodal }) {
+    const { enqueueSnackbar } = useSnackbar();
+
     const [category, setCategory] = useState()
     const [categoryid, setCategoryid] = useState("");
     const [thumbnail, setThumbnail] = useState(null);
@@ -11,19 +14,19 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
     const [video, setVideo] = useState("");
     const [type, setType] = useState("image")
     const [status, setStatus] = useState(1);
-    const [isLoading,setIsLoading]=useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
 
-    const handleThumbnailChange =async (e) => {
+    const handleThumbnailChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
             const data = new FormData();
-          data.append('file', file);
-          const res = await axios.post('/api/admin/upload', data);
-          // console.log(URL.createObjectURL(file))
-          setThumbnail(res.data.fileName); 
-            }
-     
+            data.append('file', file);
+            const res = await axios.post('/api/admin/upload', data);
+            // console.log(URL.createObjectURL(file))
+            setThumbnail(res.data.fileName);
+        }
+
     };
 
 
@@ -32,19 +35,19 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
         setIsLoading(true)
         try {
             const file = e.target.files[0];
-    
+
             if (file) {
-               
-                
-    
-             
-    
+
+
+
+
+
                 const data = new FormData();
                 data.append('file', file);
-    
+
                 const res = await axios.post('/api/admin/upload', data);
                 console.log(res);
-    
+
                 if (res?.data?.success) {
                     setImage(res.data.fileName);
                     setIsLoading(false)
@@ -74,12 +77,13 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
                 video: type === "image" ? "" : video,
                 status: status,
                 category: categoryid,
+                token :localStorage.getItem("token")
             };
-    
+
             console.log(postdata);
-    
+
             const { data } = await axios.put("/api/admin/gallery", postdata);
-    
+
             // You can customize the success message based on your response data
             if (data.success) {
                 enqueueSnackbar("Item added successfully", { variant: 'success' });
@@ -93,7 +97,7 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
             enqueueSnackbar("An error occurred while adding item", { variant: 'error' });
         }
     };
-    
+
 
     const handleUpdate = async (_id) => {
         try {
@@ -105,13 +109,14 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
                 video: type === "image" ? "" : video,
                 status: status,
                 category: categoryid,
-                _id: _id
+                _id: _id,
+                 token: localStorage.getItem("token")
             };
-    
+
             console.log(postdata);
-    
+
             const { data } = await axios.put("/api/admin/gallery", postdata);
-    
+
             // You can customize the success message based on your response data
             if (data.success) {
                 enqueueSnackbar("Item updated successfully", { variant: 'success' });
@@ -126,7 +131,7 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
             enqueueSnackbar("An error occurred while updating item", { variant: 'error' });
         }
     };
-    
+
 
 
 
@@ -148,8 +153,8 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
             setCategory(data)
         }
         fetchcategory()
-        
-        if(data){
+
+        if (data) {
             setThumbnail(data?.thumbnailimg)
             setVideo(data?.video)
             setStatus(data?.status)
@@ -162,7 +167,7 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
 
     return (
         <>
-          {isLoading&&<Loading/>}
+            {isLoading && <Loading />}
             <Dialog onClose={_close_drawer} open={openmodal}>
                 <DialogTitle>
                     {data ? "Update image" : "Add Image"}
@@ -266,13 +271,13 @@ function AddUpdateImage({ data, close_drawer, openmodal }) {
                         </button>
                     </div>
                     <div className='col-span-2'>
-                     {data?
-                     <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={()=>handleUpdate(data._id)}>
-                     Update
-                 </button>
-                     :   <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={handleAdd}>
-                            Add
-                        </button>}
+                        {data ?
+                            <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={() => handleUpdate(data._id)}>
+                                Update
+                            </button>
+                            : <button className="mx-4 bg-gray-500 p-2 px-8 rounded" onClick={handleAdd}>
+                                Add
+                            </button>}
                     </div>
                 </div>
                 <div className='mb-2' />

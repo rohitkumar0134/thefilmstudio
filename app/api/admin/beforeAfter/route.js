@@ -7,7 +7,7 @@ import verifyToken from '../verify-token/route';
 
 export async function GET(request) {
   await connectMongoDB();
-  const beforeAfterdata = await beforeAfter.find({ status: 1 });
+  const beforeAfterdata = await beforeAfter.find();
   console.log(beforeAfterdata)
   return NextResponse.json({ beforeAfter: beforeAfterdata }, { status: 200 });
 }
@@ -62,13 +62,9 @@ export async function PUT(request) {
 
     console.log(updatedLog);
 
-    if (updatedLog.nModified > 0) {
-      // Document(s) were modified, indicating a successful update
+   
       return NextResponse.json({ success: true, message: "Image updated successfully" }, { status: 201 });
-    } else {
-      // Document was not modified, indicating that the update did not occur
-      return NextResponse.json({ success: false, message: "No changes made. Image may not exist or no modifications were applied." }, { status: 400 });
-    }
+    
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json({ success: false, message: "An error occurred while updating image" }, { status: 500 });
